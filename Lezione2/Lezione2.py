@@ -96,8 +96,22 @@ for i in name_list:
 #creazione lista di veicoli
 list_vehicles: str = ["auto1","auto2","auto3","auto4"]
 
-
+#ciclo per scrivere un messaggio per ogni variabile presente
 for i in list_vehicles:
 
     print(f"\nmi piacerebbe avere {i}")
+
+
+
+#3-4. Guest List: If you could invite anyone, living or deceased, to dinner, who would you invite? 
+#Make a list that includes at least three people you’d like to invite to dinner. 
+#Then use your list to print a message to each person, inviting them to dinner.
+
+#creazione lista invitati
+list_vehicles: str = ["persona1","persona2","persona3","persona4"]
+
+#ciclo per scrivere l'invito per ogni nome presente nella lista
+for i in list_vehicles:
+
+    print(f"\nCiao {i}, mi piacerebbe invitarti a cena.")
 
