@@ -83,8 +83,21 @@ for i in name_list:
 #3-2. Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name, print a message to them. 
 #The text of each message should be the same, but each message should be personalized with the person’s name.
 
+#stampa per ogni nome della lista "ciao, 'name'"
 for i in name_list:
 
     print(f"\nCiao, {i}")
 
+
+
+#3-3. Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list that stores several examples. 
+#Use your list to print a series of statements about these items, such as “I would like to own a Honda motorcycle.”
+
+#creazione lista di veicoli
+list_vehicles: str = ["auto1","auto2","auto3","auto4"]
+
+
+for i in list_vehicles:
+
+    print(f"\nmi piacerebbe avere {i}")
 
