@@ -28,3 +28,59 @@ name_title: str = name.title()
 print(f"\n{name_upper} ")
 print(name_lower)
 print(name_title)
+
+
+
+#2-5. Famous Quote: Find a quote from a famous person you admire. 
+#Print the quote and the name of its author. Your output should look something like the following, 
+#including the quotation marks: Albert Einstein once said, “A person who never made a mistake never tried anything new.”
+
+#2-6. Famous Quote 2: Repeat Exercise 2-5, but this time, represent the famous person’s name using a variable called famous_person. 
+#Then compose your message and represent it with a new variable called message. Print your message. 
+
+#variabile contenente il nome dell'autore
+author_name: str = "a"
+
+#variabile contenente la citazione dell'autore
+quote: str = "b"
+
+
+#contiene il messaggio
+message1: str = f"{author_name} una volta disse, \"{quote}.\""
+
+
+
+#2-8. File Extensions: Python has a removesuffix() method that works exactly like removeprefix(). 
+#Assign the value 'python_notes.txt' to a variable called filename. Then use the removesuffix() method to display the filename without the file extension, 
+#like some file browsers do.
+
+#variabile con nome del file e la sua estensione
+file_name: str = "python_notes.txt"
+
+#variabile con all'interno una funzione che leva l'estensione dal nome
+file_name_noext: str = file_name.removesuffix(".txt")
+
+#stampa il nome del file senza l'estensione
+print(file_name_noext)
+
+
+
+#3-1. Names: Store the names of a few of your friends in a list called names. 
+#Print each person’s name by accessing each element in the list, one at a time.
+
+
+#creazione della lista di nomi
+name_list: list = ["Daniele","Andrea","Alessandro","Francesco"]
+
+
+#stampa i nomi nella lista uno per volta tramite 'for'
+for i in name_list:
+
+    print(i)
+
+
+#3-2. Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name, print a message to them. 
+#The text of each message should be the same, but each message should be personalized with the person’s name.
+
+
+
