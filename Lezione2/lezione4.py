@@ -59,3 +59,23 @@ def check_length(stringa):
 stringa = input("inserisci una stringa a piacere e io ti diro se è più lunga, uguale o più corta di 10 caratteri: \n")
 
 check_length(stringa)
+
+
+
+"""
+Write a function print_numbers(), which takes a list of numbers as argument.
+Using a for loop, print each number one by one."""
+
+
+def print_numbers(lista):
+
+    for i in lista:
+
+        print(i)
+
+
+
+lista = [0,1,2,3,4,5,6,7,8,9]
+
+print_numbers(lista)
+
