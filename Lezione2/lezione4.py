@@ -1,4 +1,4 @@
-def sottrazione(a,b) -> int:
+def sottrazione(a:int,b:int) -> int:
 
     sott = a - b
     return sott
