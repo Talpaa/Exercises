@@ -78,4 +78,27 @@ def print_numbers(lista):
 lista = [0,1,2,3,4,5,6,7,8,9]
 
 print_numbers(lista)
+print("\n")
 
+
+"""
+Write a function check_each(), which takes a list of numbers as argument.
+Using a for loop, iterate through the list.
+For each number, print “bigger” if it’s bigger than 5, “smaller” if it’s smaller than 5,
+and “equal” if it’s equal to 5."""
+
+def check_list_value(lista):
+
+    for num in lista:
+
+        if num > 5:
+            print(f"{num} è più grande di 5")
+
+        elif num==5:
+            print(f"{num} è uguale a 5")
+
+        else:
+            print(f"{num} è più piccolo di 5")
+
+lista1 = [0,1,2,3,4,5,6,7,8,9]
+check_list_value(lista1)
