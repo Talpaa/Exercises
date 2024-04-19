@@ -107,20 +107,39 @@ for i in list_vehicles:
 #Make a list that includes at least three people you’d like to invite to dinner. 
 #Then use your list to print a message to each person, inviting them to dinner.
 
-#creazione lista invitati
-list_vehicles: str = ["persona1","persona2","persona3","persona4"]
-
-#ciclo per scrivere l'invito per ogni nome presente nella lista
-for i in list_vehicles:
-
-    print(f"\nCiao {i}, mi piacerebbe invitarti a cena.")
-
-
-
 #3-5. Changing Guest List: You just heard that one of your guests can’t make the dinner, so you need to send out a new set of invitations. 
 #You’ll have to think of someone else to invite.
 
 # Start with your program from Exercise 3-4. Add a print() call at the end of your program, stating the name of the guest who can’t make it.
 # Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
 # Print a second set of invitation messages, one for each person who is still in your list.
+
+
+def manda_inviti(list_invited):
+
+    #ciclo per scrivere l'invito per ogni nome presente nella lista
+    for i in list_invited:
+
+        print(f"\nCiao {i}, mi piacerebbe invitarti a cena.")
+
+
+#creazione lista invitati
+list_invited: str = ["persona1","persona2","persona3","persona4"]
+
+#chiamo la funzione che ho creato per mandare gli inviti
+manda_inviti(list_invited)
+
+print(f"\n\n{list_invited[2]} non potrà partecipare alla cena\n\n")
+
+#sostituisco l'invitato che non può venire con una nuova persona
+list_invited[2] = "persona5"
+
+#richiamo la funzione che ho creato per mandare gli inviti
+manda_inviti(list_invited)
+
+
+
+
+
+
 
