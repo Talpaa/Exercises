@@ -109,3 +109,69 @@ if num != None:
 else:
 
     print(f"Nessun numero della lista è presente in più del 50% delle poszioni della lista")
+
+
+
+
+#esercizio 5
+
+def move_zeroes(nums: list[int]):
+
+    z: int = 0
+    ls = []
+
+    for i in nums:
+
+        if i == 0:
+
+            z += 1
+
+        else:
+            
+            ls.append(i)
+
+
+    for i in range(z):
+
+        ls.append(0)
+
+    return ls
+
+
+ls = [0,1,0,3,12]
+
+print(f"Lista da modificare: {ls}")
+
+new_ls = move_zeroes(ls)
+
+
+print(f"Ecco a te la nuova lista {new_ls}")
+
+
+
+
+
+#esercizio 5
+
+def move_zeroes_bis(nums: list[int]):
+
+    z: int = 0
+
+    for i in nums:
+
+        if i == 0:
+
+            nums.pop(i)
+            nums.append(i)
+
+    return nums
+
+
+ls_bis = [0,1,0,3,12]
+
+print(f"\n\nLista da modificare: {ls}")
+
+new_ls_bis = move_zeroes_bis(ls)
+
+
+print(f"Ecco a te la nuova lista {new_ls}")
