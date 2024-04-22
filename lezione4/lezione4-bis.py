@@ -151,7 +151,7 @@ print(f"Ecco a te la nuova lista {new_ls}")
 
 
 
-#esercizio 5
+#esercizio 5-bis
 
 def move_zeroes_bis(nums: list[int]):
 
@@ -175,3 +175,35 @@ new_ls_bis = move_zeroes_bis(ls)
 
 
 print(f"Ecco a te la nuova lista {new_ls}")
+
+
+
+#esercizio 6
+
+def intersection(nums1: list[list], nums2: list[list])-> list[list]:
+
+    set_nums1 = set(nums1)
+    set_nums2 = set(nums2)
+    intersection_nums: list = []
+
+    for i in set_nums1:
+
+        for j in set_nums2:
+
+            if i == j:
+
+                intersection_nums.append(i)
+
+
+    return intersection_nums
+
+
+
+
+ls1: list = [1,1,2,3,4,6,5,7,8]
+ls2: list = [2,5,6,8,2,4,8,3,0]
+
+intersection_ls: list = intersection(ls1,ls2)
+
+
+print(intersection_ls)
