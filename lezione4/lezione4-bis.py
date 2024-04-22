@@ -43,11 +43,6 @@ def ultima_parola(s):
 
             return a
 
-    
-
-
-
-
 
 s1: str = "Hello world     "
 
@@ -62,3 +57,29 @@ s3: str = "lufy is still joyboy"
 ultima = ultima_parola(s3)
 print(f"\nL'ultima parola della frase è lunga {ultima}")
 
+
+
+#esercizio 3
+
+def convert_to_title(col_number):
+
+    result: str = ""
+    alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
+    while col_number > 26:
+
+        a = (col_number-1) % 26
+        col_number = (col_number // 26)-1
+        print(col_number)
+
+        result = alfabeto[a]+result
+
+
+    result = alfabeto[col_number]+result
+
+    return result 
+
+titolo: int = 1214
+coversione: str = convert_to_title(titolo)
+
+print(coversione)
