@@ -1,7 +1,7 @@
 
 #esercizio 1
 
-def palindromi(x):
+def palindromi(x: str)->bool:
 
     str_reverse = x[::-1]    
 
@@ -28,7 +28,7 @@ palindromi(str_y)
 
 #esercizio 2
 
-def ultima_parola(s):
+def ultima_parola(s: str)->int:
 
     a: int = 0
     b: int = 0
@@ -61,7 +61,7 @@ print(f"\nL'ultima parola della frase è lunga {ultima}")
 
 #esercizio 3
 
-def convert_to_title(col_number):
+def convert_to_title(col_number: int)->str:
 
     result: str = ""
     alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
@@ -70,7 +70,6 @@ def convert_to_title(col_number):
 
         a = (col_number-1) % 26
         col_number = (col_number // 26)-1
-        print(col_number)
 
         result = alfabeto[a]+result
 
@@ -83,3 +82,30 @@ titolo: int = 1214
 coversione: str = convert_to_title(titolo)
 
 print(coversione)
+
+
+#esercizio 4
+
+
+def maggiore_di_element(ls: list)->int:
+
+    for i in set(ls):
+
+        if ls.count(i) > (len(ls)/2):
+
+            return i
+
+    return None
+
+ls = [3,3,3,3,3,3,3,2,2,2,2,2,2,2]
+
+num: int = maggiore_di_element(ls)
+
+
+if num != None:
+
+    print(f"Il numero {num} è presente in più del 50% delle poszioni della lista")
+
+else:
+
+    print(f"Nessun numero della lista è presente in più del 50% delle poszioni della lista")
