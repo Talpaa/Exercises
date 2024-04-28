@@ -383,7 +383,16 @@ for key in more_lucky_number:
     #The keys for each city’s dictionary should be something like country, population, and fact. 
     #Print the name of each city and all of the information you have stored about it.
 print("\n\n\n")
+about_roma: dict = {"country": "Italia", "population": "2,8 milioni di persone", 
+                    "fact": "Uno dei monumenti più famosi e visitati di Roma è il Colosseo. Questo antico anfiteatro, chiamato anche Anfiteatro Flavio, è stato il luogo di terribili battaglie tra gladiatori e animali, ma anche di spettacoli teatrali e di battaglie navali simulate."}
 
+about_parigi: dict = {"country": "Francia", "population": "11,3 milioni di persone", 
+                      "fact": "Parigi, la Ville Lumière, è indiscutibilmente famosa per le sue attrazioni iconiche come la Tour Eiffel o il Notre Dame, per i suoi musei di fama mondiale come il Louvre e l'Orsay e per essere considerata per antonomasia la città più romantica al mondo."}
+
+about_Barcellona: dict = {"country": "Spagna", "population": "5,7 milioni di persone", 
+                          "fact": "La Sagrada Familia è l’opera più famosa dell’architetto catalano Gaudí, che ha plasmato il paesaggio architettonico di Barcellona fino alla sua morte nel 1926."}
+
+cities: dict = {"Roma": about_roma, "Parigi": about_parigi, "Barcellona": about_Barcellona}
 
 
      
