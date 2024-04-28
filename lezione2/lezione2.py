@@ -355,7 +355,35 @@ for i in pet:
 
 
 #6-9. Favorite Places: Make a dictionary called favorite_places. Think of three names to use as keys in the dictionary, and store one to three favorite places for each person. 
-    #To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
     #Loop through the dictionary, and print each person’s name and their favorite places.
 print("\n\n\n")
-favorite_places: dict = {"Francesco": "a, b, c", "Alessandro": "d, e, f", "Giulia": "g, h, i"}
+favorite_places: dict = {
+    "Francesco": "La grande barriera corallina, Colosseo, Grande Muraglia cinese", 
+    "Alessandro": "Taj Mahal, Grand Canyon, Templi di Angkor", 
+    "Giulia": "Cascate di Iguazú, Machu Picchu, Golden Circle Route"}
+
+for key in favorite_places:
+
+     print(f"{key}: {favorite_places[key]}\n")
+
+
+
+#6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
+    #Then print each person’s name along with their favorite numbers.
+print("\n\n\n")
+more_lucky_number: dict = {"Mario": "5, 63", "Francesco": "4, 52", "Alessandro": "7, 92", "Giulia": "8, 37"}
+
+for key in more_lucky_number:
+
+    print(f"{key}: {more_lucky_number[key]}")
+
+
+#6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. 
+    #Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city. 
+    #The keys for each city’s dictionary should be something like country, population, and fact. 
+    #Print the name of each city and all of the information you have stored about it.
+print("\n\n\n")
+
+
+
+     
