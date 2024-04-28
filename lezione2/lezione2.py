@@ -277,19 +277,11 @@ print(lingue)
     #As you loop through the list, print everything you know about each person.
 print("\n\n\n")
 persona1: dict = {"first_name": "Mario", "last_name": "Rossi", "age": "40", "city": "Milano"}
-persona2: dict = {"first_name": "Esposito", "last_name": "Bianchi", "age": "80", "city": "Napoli"}
-persona3: dict = {"first_name": "Giulia", "last_name": "Verdi", "age": "20", "city": "Roma"}
 
-people: list = [persona1, persona2, persona3]
 
 for key in persona1:
 
     print(persona1[key])
-print("\n")
-for i in people:
-
-    print(i)
-
 
 
 
@@ -334,19 +326,35 @@ for key in glossario:
     print(f"{glossario[key]}\n")
 
 
-#6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. 
-#In each dictionary, include the kind of animal and the owner’s name. 
-#Store these dictionaries in a list called pets. 
-#Next, loop through your list and as you do, print everything you know about each pet. 
+#6-7. People: Start with the program you wrote for Exercise 6-1. 
+    #Make two new dictionaries representing different people, and store all three dictionaries in a list called people. Loop through your list of people. 
+    #As you loop through the list, print everything you know about each person.
 print("\n\n\n")
-pet1: dict = {"breed": "dog", "sex": "male","name": "Rex", "age": "7", "color": "black"}
-pet2: dict = {"breed": "cat", "sex": "female","name": "Simba", "age": "12", "color": "red"}
-pet3: dict = {"breed": "bird", "sex": "male","name": "coco", "age": "2", "color": "green"}
-pet4: dict = {"breed": "horse", "sex": "male","name": "spirit", "age": "20", "color": "brown"}
-pet5: dict = {"breed": "rabbit", "sex": "female","name": "Zucchero", "age": "3", "color": "white"}
+persona1: dict = {"first_name": "Mario", "last_name": "Rossi", "age": "40", "city": "Milano"}
+persona2: dict = {"first_name": "Esposito", "last_name": "Bianchi", "age": "80", "city": "Napoli"}
+persona3: dict = {"first_name": "Giulia", "last_name": "Verdi", "age": "20", "city": "Roma"}
+
+people: list = [persona1, persona2, persona3]
+
+for i in people:
+    print("\n")
+    for key in persona1:
+
+        print(f"{key}: {i[key]}")
 
 
-pet: list = [pet1, pet2, pet3, pet4, pet5]
+
+#6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. 
+    #In each dictionary, include the kind of animal and the owner’s name. 
+    #Store these dictionaries in a list called pets. 
+    #Next, loop through your list and as you do, print everything you know about each pet. 
+print("\n\n\n")
+pet1: dict = {"breed": "dog", "owner": "Esposito"}
+pet2: dict = {"breed": "cat", "owner": "Mario"}
+pet3: dict = {"breed": "rabbit", "owner": "Giulia"}
+
+
+pet: list = [pet1, pet2, pet3]
 
 for i in pet:
 
@@ -382,7 +390,7 @@ for key in more_lucky_number:
     #Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city. 
     #The keys for each city’s dictionary should be something like country, population, and fact. 
     #Print the name of each city and all of the information you have stored about it.
-print("\n\n\n")
+print("\n")
 about_roma: dict = {"country": "Italia", "population": "2,8 milioni di persone", 
                     "fact": "Uno dei monumenti più famosi e visitati di Roma è il Colosseo. Questo antico anfiteatro, chiamato anche Anfiteatro Flavio, è stato il luogo di terribili battaglie tra gladiatori e animali, ma anche di spettacoli teatrali e di battaglie navali simulate."}
 
@@ -394,5 +402,37 @@ about_Barcellona: dict = {"country": "Spagna", "population": "5,7 milioni di per
 
 cities: dict = {"Roma": about_roma, "Parigi": about_parigi, "Barcellona": about_Barcellona}
 
+for key in cities:
+
+    print(f"\n\n{key.upper()}\n")
+
+    for key1 in cities[key]:
+
+        
+        print(f"{key1}: {cities[key][key1]}")
+
+
+
+#6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. 
+    #Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program, or improving the formatting of the output.
+
+print("\n\n")
+#Extensions of 6-8
+print("\n\n\n")
+pet1: dict = {"Specie": "Cane", "Sesso": "Maschio", "Nome": "Rex", "Età": "7 anni", "Colore": "Nero", "Padrone": "Esposito"}
+pet2: dict = {"Specie": "Gatto", "Sesso": "Femmina","Nome": "Simba", "Età": "12 anni", "Colore": "Rosso", "Padrone": "Mario"}
+pet3: dict = {"Specie": "Coniglio", "Sesso": "Femmina","Nome": "Zucchero", "Età": "3 anni", "Colore": "Bianco", "Padrone": "Giulia"}
+pet4: dict = {"Specie": "Uccello", "Sesso": "Maschio","Nome": "coco", "Età": "2 anni", "Colore": "Verde", "Padrone": "Carlo"}
+pet5: dict = {"Specie": "Cavallo", "Sesso": "Maschio","Nome": "spirit", "Età": "20 anni", "Colore": "Marrone", "Padrone": "Alice"}
+
+
+
+pet: list = [pet1, pet2, pet3, pet4, pet5]
+
+for i in pet:
+    print("\n")
+    for key in pet1:
+
+        print(f"{key}: {i[key]}")
 
      
