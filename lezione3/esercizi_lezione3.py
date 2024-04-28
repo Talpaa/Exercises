@@ -46,7 +46,7 @@ for i in numeri:
     break
 #4-5. Summing a Million: Make a list of the numbers from one to one million, and then use min() and max() to make sure your list actually starts at one and ends at one million. 
     #Also, use the sum() function to see how quickly Python can add a million numbers.
-
+print("\n\n\n")
 print(f"Il numero più piccolo nella lista è {min(numeri)}")
 
 print(f"Il numero più grande nella lista è {max(numeri)}")
@@ -55,17 +55,47 @@ print(f"La somma di tutti i numeri della lista è {sum(numeri)}")
 
 #4-6. Odd Numbers: Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. Use a for loop to print each number.
 print("\n\n\n")
+odd_numbers: list = []
 
-for i in range(1,21,odd):
+for i in range(1,20,2):
+
+    odd_numbers.append(i)
+
+for i in odd_numbers:
 
     print(f"{i}")
 
 #4-7. Threes: Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
+print("\n\n\n")
+threes: list = []
 
+for i in range(3,31,3):
+
+    threes.append(i)
+
+for i in threes:
+
+    print(f"{i}")
 #4-8. Cubes: A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. 
-    #Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), and use a for loop to print out the value of each cube.
+    #Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), and use a for loop to print out the value of each cube.ù
+print("\n\n\n")
+cubes: list = []
+
+for i in range(1,11):
+
+    cubes.append(i**3)
+
+for i in cubes:
+    print(i)
 
 #4-9. Cube Comprehension: Use a list comprehension to generate a list of the first 10 cubes.
+print("\n\n\n")
+cubes_comprehension: list = []
+
+cubes_comprehension.append(i for i in range(1,11))
+
+for i in cubes_comprehension:
+    print(i)
 
 #4-10. Slices: Using one of the programs you wrote in this chapter, add several lines to the end of the program that do the following:
     # Print the message The first three items in the list are:. Then use a slice to print the first three items from that program’s list.
