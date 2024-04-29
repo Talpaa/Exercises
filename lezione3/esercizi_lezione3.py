@@ -129,6 +129,35 @@ print(f"I gusti di pizza preferiti del mio amico sono:")
 for i in friend_pizza:
     print(i)
 
+#4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
+
+#4-1
+print("\n\n\n")
+
+pizza = ["Margherita", "Diavola", "Crostino"]
+
+for i in pizza:
+    print(f"Mi piace molto come pizza il gusto {i}\n")
+
+print("Mi piace molto la pizza")
+
+#4-2
+print("\n\n\n")
+
+animali = ["Cane", "Gatto", "Coniglio"]
+
+for i in animali:
+    print(f"Mi piace molto il {i} come animale\n")
+
+print("Tutti questi animali hanno la coda")
+
+#4-3
+print("\n\n\n")
+
+for i in range(1, 21):
+    print(f"{i}")
+
+
 #5-1. Conditional Tests: Write a series of conditional tests. 
     #Print a statement describing each test and your prediction for the results of each test. 
     #Your code should look something like this: car = 'subaru'
