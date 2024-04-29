@@ -132,10 +132,45 @@ while controllo == True:
 
 #8-11. Archived Messages: Start with your work from Exercise #8-10. Call the function send_messages() with a copy of the list of messages. 
     #After calling the function, print both of your lists to show that the original list has retained its messages.
+print("\n\n\n")
+def show_messages(lista: list):
+
+    for i in lista:
+
+        print(i)
+
+def send_messages(lista: list)->list:
+
+    messaggi_inviati = []
+
+    for i in lista:
+
+        messaggi_inviati.append(i)
+        print(i)
+
+    return messaggi_inviati
+
+messaggi: list = ["Ciao, come stai?","bene e te?","bene, fai qualcosa stasera?","no, avevi in mente qualcosa?"]
+
+show_messages(messaggi)
+messaggi_inviati: list = send_messages(messaggi)
+
+print(messaggi)
+print(messaggi_inviati)
+
+copia_messaggi = send_messages(messaggi)
+
+print(messaggi)
+print(copia_messaggi)
+
+
+
 
 #8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
     #The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. 
     #Call the function three times, using a different number of arguments each time.
+print("\n\n\n")
+
 
 #8-13. User Profile:  Build a profile of yourself by calling build_profile(), using your first and last names and three other key-value pairs that describe you. 
     #All the values must be passed to the function as parameters. 
