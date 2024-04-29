@@ -1,10 +1,20 @@
 #8-1. Message: Write a function called display_message() that prints one sentence telling everyone what you are learning about in this chapter. 
     #Call the function, and make sure the message displays correctly.
+print("\n")
+def display_message():
+
+    print("Sto imparando un sacco di cose")
+
+display_message()
 
 #8-2. Favorite Book: Write a function called favorite_book() that accepts one parameter, title. 
     #The function should print a message, such as "One of my favorite books is Alice in Wonderland". 
     #Call the function, making sure to include a book title as an argument in the function call.
+print("\n\n\n")
+def favorite_book(book):
+    print(f"Uno dei miei libri preferiti è {book}")
 
+favorite_book("Alice in Wonderland")
 #8-3. T-Shirt: Write a function called make_shirt() that accepts a size and the text of a message that should be printed on the shirt. 
     #The function should print a sentence summarizing the size of the shirt and the message printed on it. 
     #Call the function once using positional arguments to make a shirt. 
@@ -12,15 +22,52 @@
 
 #8-4. Large Shirts: Modify the make_shirt() function so that shirts are large by default with a message that reads I love Python. 
     #Make a large shirt and a medium shirt with the default message, and a shirt of any size with a different message.
+print("\n\n\n")
+def make_shirt(size: str,text: str):
+     
+    if (size.lower() == ('m')) or (size.lower() == ('l')):
+     
+        print(f"La taglia della maglietta è: {size}")
+        print(f"Il testo che dovrà essere stampato sulla maglietta è:")
+        print(f"I love Python\n")
+    else:
+        print(f"La taglia della maglietta è: {size}")
+        print(f"Il testo che dovrà essere stampato sulla maglietta è:\n {text}\n")
+
+make_shirt("M", None)
+
+make_shirt(text = "b", size = "XL")
+
 
 #8-5. Cities: Write a function called describe_city() that accepts the name of a city and its country. 
     #The function should print a simple sentence, such as Reykjavik is in Iceland. 
     #Give the parameter for the country a default value. Call your function for three different cities, at least one of which is not in the default country.
+print("\n\n\n")
+def describe_city(city: str = "Roma", country: str = "Italia"):
+    print(f"{city} è in {country}")
 
+describe_city()
+describe_city("Stoccolma","Svezia")
+describe_city("New Delhi","India")
+describe_city("Brasília","Brazil")
 #8-6. City Names: Write a function called city_country() that takes in the name of a city and its country. 
     #The function should return a string formatted like this: "Santiago, Chile". 
     #Call your function with at least three city-country pairs, and print the values that are returned.
+print("\n\n\n")
+def city_country(city: str, country: str)->str:
+    frase: str = (f"{city}, {country}")
 
+    return frase
+
+frase: str = ""
+frase = city_country("Roma","Italia")
+print(frase)
+frase = city_country("Stoccolma","Svezia")
+print(frase)
+frase = city_country("New Delhi","India")
+print(frase)
+frase = city_country("Brasília","Brazil")
+print(frase)
 #8-7. Album: Write a function called make_album() that builds a dictionary describing a music album. 
     #The function should take in an artist name and an album title, and it should return a dictionary containing these two pieces of information. 
     #Use the function to make three dictionaries representing different albums. 
@@ -28,11 +75,52 @@
     #Use None to add an optional parameter to make_album() that allows you to store the number of songs on an album. 
     #If the calling line includes a value for the number of songs, add that value to the album’s dictionary. 
     #Make at least one new function call that includes the number of songs on an album.
+print("\n\n\n")
+def print_album(album: dict):
+    
+    for key in album:
 
+        if album[key] != None:
+            print(f"{key}: {album[key]}")
+
+    print("\n")
+
+def make_album(artist: str,album: str,num: str = None)->dict:
+    
+    info_album: dict ={"Artist": artist, "Album": album, "Canzoni": num}
+    return info_album
+
+print_album(make_album("Mace","Maya","16"))
+
+print_album(make_album("Gemitaiz","QVC 10","22"))
+
+print_album(make_album("Stabber","Trueno","11"))
+
+print_album(make_album("Taxi B","ZOLFO"))
 #8-8. User Albums: Start with your program 
     #from Exercise 8-7. Write a while loop that allows users to enter an album’s artist and title. 
     #Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. 
     #Be sure to include a quit value in the while loop.
+controllo: bool = True
+while controllo == True:
+    
+    artista = input("Iserisci il nome dell'artista che ha creato l'album: ")
+
+    titolo = input("Iserisci il nome dell'album: ")
+
+    canzoni = input("Iserisci il numero di canzoni presenti nell'album: ")
+
+    print("\n")
+    print_album(make_album(artista,titolo,canzoni))
+    print("\n")
+
+    print("Iserisci 1(UNO) per creare un nuovo album")
+    n = input("Iserisci 0(ZERO) per creare uscire dal programma: ")
+    print("\n")
+
+    if n != "1":
+
+        controllo == False
 
 #8-9. Messages: Make a list containing a series of short text messages. 
     #Pass the list to a function called show_messages(), which prints each text message.
