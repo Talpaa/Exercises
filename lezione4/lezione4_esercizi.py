@@ -102,6 +102,7 @@ print_album(make_album("Taxi B","ZOLFO"))
     #Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. 
     #Be sure to include a quit value in the while loop.
 controllo: bool = True
+n: str = "0"
 while controllo == True:
     
     artista = input("Iserisci il nome dell'artista che ha creato l'album: ")
@@ -118,9 +119,9 @@ while controllo == True:
     n = input("Iserisci 0(ZERO) per creare uscire dal programma: ")
     print("\n")
 
-    if n != "1":
+    if n != ("1"):
 
-        controllo == False
+        controllo = False
 
 #8-9. Messages: Make a list containing a series of short text messages. 
     #Pass the list to a function called show_messages(), which prints each text message.
