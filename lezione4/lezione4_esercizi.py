@@ -171,16 +171,87 @@ print(copia_messaggi)
     #Call the function three times, using a different number of arguments each time.
 print("\n\n\n")
 
+def sandwiches(ingredienti: list,num: int)->int:
+    
+    n: int = 1
+
+    print(f"Panino numero #{num}")
+    print(f"INGREDIENTI:\n")
+
+    for i in ingredienti:
+        print(f"    {n}){i}")
+        n += 1
+    
+    print("\n")
+    num += 1
+    return num
+    
+
+num: int = 1
+
+panino1: list = ["pane","tonno","pomodori"]
+num = sandwiches(panino1,num)
+
+panino2: list = ["pane","insalata","gamberetti","maionese"]
+num = sandwiches(panino2,num)
+
+panino3: list = ["pane","prosciutto cotto", "formaggio"]
+num = sandwiches(panino3,num)
+
 
 #8-13. User Profile:  Build a profile of yourself by calling build_profile(), using your first and last names and three other key-value pairs that describe you. 
-    #All the values must be passed to the function as parameters. 
+    #All the values must be passed to the function as parameters.
     #The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
+print("\n\n\n")
+def build_profile(profilo: list)->str:
+    
+    stringa_profilo: str = f"{nome} {cognome}, {età} anni, capelli {capelli}, {peso} Kg"
+
+    return stringa_profilo
+
+nome: str = "Eric"
+cognome: str = "Crow"
+età: str = "45"
+capelli: str = "marroni"
+peso: str = "67"
+
+profilo: list = [nome, cognome, età, capelli, peso]
+
+stringa_profilo: str = build_profile([nome, cognome, età, capelli, peso])
+
+print(stringa_profilo)
 
 #8-14. Cars: Write a function that stores information about a car in a dictionary. The function should always receive a manufacturer and a model name. 
     #It should then accept an arbitrary number of keyword arguments. 
     #Call the function with the required information and two other name-value pairs, such as a color or an optional feature. 
     #Your function should work for a call like this one: car = make_car('subaru', 'outback', color='blue', tow_package=True) 
     #Print the dictionary that’s returned to make sure all the information was stored correctly. 
+print("\n\n\n")
+def make_car(casa_produttrice: str,modello: str,colore: str, traino: bool)->dict:
+    
+    car: dict = {
+        "Casa_produttrice": casa_produttrice,
+        "modello": modello,
+        "colore": colore,
+        "traino": traino
+        }
+    
+    return car
+
+car = make_car('subaru', 'outback', colore='blu', traino=False)
+
+for key in car:
+
+    if car[key] == True:
+
+        print(f"{key.upper()}: presente")
+
+    elif car[key] == False:
+
+        print(f"{key.upper()}: non presente")
+
+    else:
+        print(f"{key.upper()}: {car[key]}")
 
 #8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. 
     #Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
