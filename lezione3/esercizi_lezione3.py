@@ -128,14 +128,6 @@ print("\n")
 print(f"I gusti di pizza preferiti del mio amico sono:")
 for i in friend_pizza:
     print(i)
-#4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. 
-    #Choose a version of foods.py, and write two for loops to print each list of foods.
-
-#4-14. PEP 8: Look through the original PEP 8 style guide at https://python.org/dev/peps/pep-0008. 
-    #You won’t use much of it now, but it might be interesting to skim through it.
-
-#4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
-
 
 #5-1. Conditional Tests: Write a series of conditional tests. 
     #Print a statement describing each test and your prediction for the results of each test. 
@@ -156,22 +148,82 @@ for i in friend_pizza:
     # Tests using the and keyword and the or keyword
     # Test whether an item is in a list
     # Test whether an item is not in a list
+print("\n\n\n")
+car: list = ['Subaru', 'Audi', ]
+print("La macchina scelta è una Subaru? Secondo me uscira 'True'.")
+print(car[0].lower() == 'subaru')
+
+print("La macchina scelta non è una Subaru? Secondo me uscira 'False'.")
+print(car[0].lower() != 'subaru')
+
+print("\nLa macchina scelta è un'Audi? Secondo me uscira 'False'.")
+print(car[1].lower() == 'audi')
+
+#test
+print("\n")
+print(car[0].lower() == car[1].lower())
+
+print(car[0].lower() == 'SUBARU'.lower())
+
+print(car[0] == car[1])
+print(car[0] != car[1])
+print(car[0] > car[1])
+print(car[0] < car[1])
+print(car[0] >= car[1])
+print(car[0] <= car[1])
+
+print((car[0] != car[1])and(car[0] > car[1]))
+print((car[0] != car[1])or(car[0] < car[1]))
+
+if 'Subaru' in car: print(f'Subaru è presente nel catalogo {True}')
+
+if 'mercedes' not in car: print(f'Mercedes non è presente nel catalogo {True}')
 
 #5-3. Alien Colors #1: Imagine an alien was just shot down in a game. Create a variable called alien_color and assign it a value of 'green', 'yellow', or 'red'.
     # Write an if statement to test whether the alien’s color is green. If it is, print a message that the player just earned 5 points.
     # Write one version of this program that passes the if test and another that fails. (The version that fails will have no output.)
+print("\n\n\n")
+
+alien_color: str = 'green'
+
+if alien_color == 'green':
+
+    print("Hai guadagnato 5 punti")
+
+if alien_color == 'red':
+
+    pass
 
 #5-4. Alien Colors #2: Choose a color for an alien as you did in Exercise 5-3, and write an if-else chain.
     # If the alien’s color is green, print a statement that the player just earned 5 points for shooting the alien.
     # If the alien’s color isn’t green, print a statement that the player just earned 10 points.
     # Write one version of this program that runs the if block and another that runs the else block.
+print("\n")
+alien_color = 'yellow'
+if alien_color == 'green':
+
+    print("Hai guadagnato 5 punti")
+
+else:
+
+    print("Hai guadagnato 10 punti")
 
 #5-5. Alien Colors #3: Turn your if-else chain from Exercise 5-4 into an if-elif-else chain.
     # If the alien is green, print a message that the player earned 5 points.
     # If the alien is yellow, print a message that the player earned 10 points.
     # If the alien is red, print a message that the player earned 15 points.
     # Write three versions of this program, making sure each message is printed for the appropriate color alien.
+print("\n")
+alien_color = 'red'
+if alien_color == 'green':
 
+    print("Hai guadagnato 5 punti")
+elif alien_color == 'yellow':
+
+    print("Hai guadagnato 10 punti")
+else:
+
+    print("Hai guadagnato 15 punti")
 #5-6. Stages of Life: Write an if-elif-else chain that determines a person’s stage of life. Set a value for the variable age, and then:
     # If the person is less than 2 years old, print a message that the person is a baby.
     # If the person is at least 2 years old but less than 4, print a message that the person is a toddler.
@@ -179,20 +231,66 @@ for i in friend_pizza:
     # If the person is at least 13 years old but less than 20, print a message that the person is a teenager.
     # If the person is at least 20 years old but less than 65, print a message that the person is an adult.
     # If the person is age 65 or older, print a message that the person is an elder.
+print("\n\n\n")
+age: int = 65
+
+if age < 2:
+    print("Sei un neonato")
+elif age < 4:
+    print("Sei un bambino")
+elif age < 13:
+    print("Sei un ragazzino")
+elif age < 20:
+    print("Sei un ragazzo")
+elif age < 65:
+    print("Sei un adulto")
+else:
+    print("Sei un anziano")
 
 #5-7. Favorite Fruit: Make a list of your favorite fruits, and then write a series of independent if statements that check for certain fruits in your list.
     # Make a list of your three favorite fruits and call it favorite_fruits.
     # Write five if statements. Each should check whether a certain kind of fruit is in your list. 
     #If the fruit is in your list, the if block should print a statement, such as You really like Apples!
+print("\n\n\n")
+fruit: list = ['pesca','mela','anguria']
+
+if 'pesca' in fruit:
+    print("Ti piacciono davvero le pesche")
+
+if 'mela' in fruit:
+    print("Ti piacciono davvero le mele")
+
+if 'anguria' in fruit:
+    print("Ti piacciono davvero le angurie")
+
+if 'arancia' in fruit:
+    print("Ti piacciono davvero le arance")
+
+if 'uva' in fruit:
+    print("Ti piacciono davvero l' uva")
 
 #5-8. Hello Admin: Make a list of five or more usernames, including the name 'admin'. 
     #Imagine you are writing code that will print a greeting to each user after they log in to a website. Loop through the list, and print a greeting to each user.
     # If the username is 'admin', print a special greeting, such as Hello admin, would you like to see a status report?
     # Otherwise, print a generic greeting, such as Hello Jaden, thank you for logging in again.
+print("\n\n\n")
+usernames: list = ["admin",'a','b','c','d']
+
+for i in usernames:
+
+    if i == 'admin':
+        print("Ciao admin, ti piacerebbe vedere lo status report?")
+
+    else:
+        print(f"Ciao {i}, grazie per aver fatto di nuvo accesso al sito")
 
 #5-9. No Users: Add an if test to hello_admin.py to make sure the list of users is not empty.
     # If the list is empty, print the message We need to find some users!
     # Remove all of the usernames from your list, and make sure the correct message is printed.
+print("\n")
+usernames.clear()
+
+if len(usernames) == 0: print("Dovremmo trovare alcuni utenti")
 
 #5-10. Checking Usernames: Do the following to create a program that simulates how websites ensure that everyone has a unique username.
     # Make a list of five or more usernames called current_users.
@@ -201,9 +299,42 @@ for i in friend_pizza:
     #If a username has not been used, print a message saying that the username is available.
     # Make sure your comparison is case insensitive. If 'John' has been used, 'JOHN' should not be accepted. 
     #(To do this, you’ll need to make a copy of current_users containing the lowercase versions of all existing users.)
+print("\n\n\n")
+current_users: list = ['a','b','c','d','e']
+new_users: list = ['a','f','g','d','h']
+a: int = 0
+for i in new_users:
 
+    for j in current_users:
+
+        if i.lower() == j.lower():
+            print("Questo username non è disponibile")
+            a += 1
+
+    if a == 0:
+        print("Questo username è disponibile")
+    a = 0
 #5-11. Ordinal Numbers: Ordinal numbers indicate their position in a list, such as 1st or 2nd. Most ordinal numbers end in th, except 1, 2, and 3.
     # Store the numbers 1 through 9 in a list.
     # Loop through the list.
     # Use an if-elif-else chain inside the loop to print the proper ordinal ending for each number. 
     #Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th", and each result should be on a separate line.
+print("\n\n\n")
+num: list = [1,2,3,4,5,6,7,8,9]
+
+for c in num:
+
+    if c == 1:
+
+        print(f"{c}st")
+
+    elif c == 2:
+
+        print(f"{c}nd")
+
+    elif c == 3:
+
+        print(f"{c}rd")
+
+    else:
+        print(f"{c}th")
