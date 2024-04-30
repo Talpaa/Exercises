@@ -137,7 +137,7 @@ def manda_inviti(list_invited: list):
 
     
 
-def ritira_inviti(list_invited: list)->list:
+def ritira_inviti(list_invited: list):
 
     i: int = (len(list_invited))-1
 
@@ -154,7 +154,6 @@ def ritira_inviti(list_invited: list)->list:
 
     del list_invited
 
-    #return list_invited
 
     
 
@@ -185,7 +184,7 @@ list_invited.append("persona6")
 manda_inviti(list_invited)
 
 print("\n\n\n")
-list_invited = ritira_inviti(list_invited)
+ritira_inviti(list_invited)
 
 print(f"\n{list_invited}")
 

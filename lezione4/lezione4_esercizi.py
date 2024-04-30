@@ -217,7 +217,7 @@ peso: str = "67"
 
 profilo: list = [nome, cognome, età, capelli, peso]
 
-stringa_profilo: str = build_profile([nome, cognome, età, capelli, peso])
+stringa_profilo: str = build_profile(profilo)
 
 print(stringa_profilo)
 
@@ -256,6 +256,8 @@ for key in car:
 #8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. 
     #Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
 
+#prof purtroppo credo che il file printing_models di cui parli l'esercizio 8-15 non è stao dato come esercizio
+
 #8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. 
     #Import the function into your main program file, and call the function using each of these approaches:
     #import module_name
@@ -263,5 +265,22 @@ for key in car:
     #from module_name import function_name as fn
     #import module_name as mn
     #from module_name import *
+print("\n\n\n")
+import module_name
+
+from module_name import manda_inviti
+from module_name import manda_inviti as fn
+
+import module_name as mn
+
+from module_name import *
+
+#creazione lista invitati
+list_invited: list = ["persona1","persona2","persona3","persona4"]
+
+#chiamo la funzione che ho importato dal file module_name.py per mandare gli inviti
+manda_inviti(list_invited)
+
 
 #8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they follow the styling guidelines described in this section.
+
