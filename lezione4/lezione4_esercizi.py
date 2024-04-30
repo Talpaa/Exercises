@@ -284,3 +284,80 @@ manda_inviti(list_invited)
 
 #8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they follow the styling guidelines described in this section.
 
+#8-11 in pep8
+
+print("\n\n\n")
+
+def show_messages(lista: list):
+    for i in lista:
+        print(i)
+
+def send_messages(lista: list) -> list:
+    messaggi_inviati = []
+    for i in lista:
+        messaggi_inviati.append(i)
+        print(i)
+    return messaggi_inviati
+
+messaggi: list = ["Ciao, come stai?", "bene e te?", "bene, fai qualcosa stasera?", "no, avevi in mente qualcosa?"]
+
+show_messages(messaggi)
+messaggi_inviati: list = send_messages(messaggi)
+
+print(messaggi)
+print(messaggi_inviati)
+
+copia_messaggi = send_messages(messaggi)
+
+print(messaggi)
+print(copia_messaggi)
+
+#8-12 in pep8
+
+print("\n\n\n")
+
+def sandwiches(ingredienti: list, num: int) -> int:
+    n: int = 1
+
+    print(f"Panino numero #{num}")
+    print(f"INGREDIENTI:\n")
+
+    for i in ingredienti:
+        print(f"    {n}){i}")
+        n += 1
+    
+    print("\n")
+    num += 1
+    return num
+    
+
+num: int = 1
+
+panino1: list = ["pane", "tonno", "pomodori"]
+num = sandwiches(panino1, num)
+
+panino2: list = ["pane", "insalata", "gamberetti", "maionese"]
+num = sandwiches(panino2, num)
+
+panino3: list = ["pane", "prosciutto cotto", "formaggio"]
+num = sandwiches(panino3, num)
+
+
+#8-13 in pep8
+print("\n\n\n")
+
+def build_profile(profilo: list) -> str:
+    stringa_profilo: str = f"{profilo[0]} {profilo[1]}, {profilo[2]} anni, capelli {profilo[3]}, {profilo[4]} Kg"
+    return stringa_profilo
+
+nome: str = "Eric"
+cognome: str = "Crow"
+età: str = "45"
+capelli: str = "marroni"
+peso: str = "67"
+
+profilo: list = [nome, cognome, età, capelli, peso]
+
+stringa_profilo: str = build_profile(profilo)
+
+print(stringa_profilo)
