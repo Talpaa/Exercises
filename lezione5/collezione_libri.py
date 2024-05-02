@@ -9,7 +9,7 @@
     Example: delete_book(dictionary, “Mark Twain”)"""
 
 
-def add_book(author: str,collezione: list):
+def add_book(author: str,collezione: list)->dict:
 
     collezione = set(collezione)
 
@@ -19,11 +19,13 @@ def add_book(author: str,collezione: list):
     
     return libreria
 
-def delete_book(libreria: dict, author: str):
+def delete_book(libreria: dict, author: str)->dict:
 
     if author in libreria:
 
         del libreria[author]
+
+    return libreria
 
         
 
@@ -32,5 +34,5 @@ def delete_book(libreria: dict, author: str):
 libreria: dict = add_book("Mark Twain", ["The Adventures of Tom Sawyer", "Life on the Mississippi"])
 print(libreria)
 
-delete_book(libreria, "Mark Twain")
+libreria = delete_book(libreria, "Mark Twain")
 print(libreria)

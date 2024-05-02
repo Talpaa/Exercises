@@ -7,7 +7,7 @@
     This function should return an updated dictionary.
     Example: add_like(dictionary, “Road Trip”, liked=True)"""
 
-def create_playlist(name: str, song_titles: list):
+def create_playlist(name: str, song_titles: list)->dict:
 
     song_titles = set(song_titles)
 
