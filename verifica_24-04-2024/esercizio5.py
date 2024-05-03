@@ -11,11 +11,7 @@ def blackjack_hand_total(cards: list[int]) -> int:
 
     for i in cards:
 
-        if i == 1:
-
-            n +=1
-
-        elif i == 11:
+        if (i == 1)or(i == 11):
 
             n +=1
 
