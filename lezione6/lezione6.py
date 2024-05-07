@@ -12,8 +12,13 @@ class Person:
 
         self.age = age
 
+    def __str__(self)->str:
+
+        #ogni volta che chiamo un oggetto per printarlo in automatico mi stamperà questo
+        return f"\n\nNome = {self.name}; \nCognome = {self.surname}; \nEtà = {self.age}"
+
 lorenzo = Person("Lorenzo","Maggi", 24) #Person.__init__("Lorenzo", "Maggi", 24)
-print(f"\n\nNome = {lorenzo.name}; \nCognome = {lorenzo.surname}; \nEtà = {lorenzo.age}")
+print(lorenzo)
 
 lorenzo.age = 22
 print(f"\nEtà = {lorenzo.age}")
@@ -24,8 +29,8 @@ surname: str = input("Inserisci il tuo cognome: ")
 age: int = int(input("Inserisci la tua età: "))
 
 user = Person(name, surname, age)
-print(f"\n\nNome = {user.name}; \nCognome = {user.surname}; \nEtà = {user.age}")
-print(f"\n\nNome = {lorenzo.name}; \nCognome = {lorenzo.surname}; \nEtà = {lorenzo.age}")
+print(user)
+print(lorenzo)
 
 
 avg_age: float = (lorenzo.age + user.age) / 2
