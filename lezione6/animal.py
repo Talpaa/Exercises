@@ -9,7 +9,7 @@ class Animal:
         
         self.name = name
         self.zampe = zampe
-        self.ochhi = occhi
+        self.occhi = occhi
         self.coda = coda
         self.zanne = zanne
 
