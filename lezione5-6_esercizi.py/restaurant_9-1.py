@@ -23,6 +23,14 @@ class Restaurant:
 
 r1 = Restaurant(name = 'La Vecchia Roma', cuisin_type = 'Romana')
 
+r2 = Restaurant(name = 'Dumpling Bar', cuisin_type = 'Cinese')
+
+r3 = Restaurant(name = 'La Cucaracha', cuisin_type = 'Messicana')
+
 Restaurant.describe_restaurant(r1)
+
+Restaurant.describe_restaurant(r2)
+
+Restaurant.describe_restaurant(r3)
 
 Restaurant.open_restaurant(r1)
