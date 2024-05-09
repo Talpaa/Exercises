@@ -43,12 +43,13 @@ class Fence:
     def __init__(self, 
                  area: float,
                  temperature: float,
-                 habitat: str) -> None:
+                 habitat: str,
+                 fauna: list = []) -> None:
         
         self.area: float = area
         self.temperature: float = temperature
         self.habitat: str = habitat
-
+        self.fauna: list = fauna
 
 class ZooKeeper:
     
@@ -70,28 +71,48 @@ class ZooKeeper:
     """Consente al guardiano dello zoo di aggiungere un nuovo animale allo zoo. 
     L'animale deve essere collocato in un recinto adeguato in base alle esigenze del suo habitat e se c'è ancora spazio nel recinto, 
     ovvero se l'area del recinto è ancora sufficiente per ospitare questo animale."""
-    def add_animal(animal: Animal, fence: Fence):
+    def add_animal(self, animal: Animal, fence: Fence):
         
-        pass
+        occupied_space: float = round(100*(1/(animal.height * animal.widht)), 3)
 
+        if (occupied_space <= fence.area)and(animal.preferred_habitat == fence.habitat):
+            
+            fence.fauna.append(animal)
+
+            fence.area -= occupied_space
+
+        elif(animal.preferred_habitat != fence.habitat):
+
+            print(f'L\'animale che stai provando ad inserire non è adatto all\' habitat di questo recinto' )
+
+        elif (occupied_space > fence.area):
+
+            print(f'L\'animale che stai provando ad inserire è più grande dell\'area rimasta nel recinto' )
 
     """Consente al guardiano dello zoo di rimuovere un animale dallo zoo. 
     L'animale viene allontanato dal suo recinto. 
     L'area del recinto viene ripristinata dello spazio che l'animale rimosso occupava."""
-    def remove_animal(animal: Animal, fence: Fence):
-        pass
+    def remove_animal(self, animal: Animal, fence: Fence):
+        
+        if animal in fence.fauna:
+
+            fence.fauna.remove(animal)
+
+        else:
+
+            print(f'L\'animale che stai provando a rimuovere non è presente in questo recinto')
 
     """Consente al guardiano dello zoo di nutrire tutti gli animali dello zoo. 
     Ogni volta che un animale viene nutrito, la sua salute(health) incrementa di 1% rispetto alla sua salute corrente, 
     e le dimensioni dell'animale (height e width) vengono incrementate del 2%. 
     L'animale si può nutrire soltanto se il recinto ha ancora spazio a sufficienza per ospitare l'animale ingrandito dal cibo."""
-    def feed(animal: Animal):
+    def feed(self, animal: Animal):
         pass
 
     """Consente al guardiano dello zoo di pulire tutti i recinti dello zoo. 
     Questo metodo restituisce un valore di tipo float che indica il tempo che il guardiano impiega per pulire il recinto. 
     Il tempo di pulizia è il rapporto dell'area occupata dagli animali diviso l'area residua del recinto. Se l'area residua è pari a 0, restituire l'area occupata."""
-    def clean(fence: Fence)->float:
+    def clean(self, fence: Fence)->float:
         pass
     
 
@@ -106,7 +127,7 @@ class Zoo:
         self.fence: Fence = fence
         self.zookeeper: ZooKeeper = zookeeper
 
-    def describe_zoo():
+    def describe_zoo(self):
         pass
 
 
