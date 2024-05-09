@@ -7,7 +7,7 @@ class Persona:
                  genere: str,
                  codice_fiscale: str) -> None:
         
-        self.nome: str = nome
+        self._nome: str = nome
         self.cognome: str = cognome
         self.data_di_nascita: int = data_di_nascita
         self.genere: str = genere
@@ -22,9 +22,17 @@ class Persona:
         
         return value.codice_fiscale == self.codice_fiscale
     
+    def get_nome(self)->str:
+
+        return self._nome.upper()
+    
+    def set_nome(self, nome: str)->None:
+
+        self._nome = nome.lower()
+    
     def __str__(self) -> str:
         
-        return f'Nome: {self.nome} \nCognome: {self.cognome}'
+        return f'Nome: {self._nome} \nCognome: {self.cognome}'
 
 persona_1: Persona = Persona(nome = 'Flavio',
                              cognome = 'Giorgi',
@@ -65,7 +73,7 @@ class Professore(Dipendente):
                  materia_insegnata: str,
                  ore_di_lezione: int) -> None:
         
-        super().__init__(nome, cognome, data_di_nascita, genere, ore_lavorate, codice_fiscale)
+        super().__init__(nome, cognome, data_di_nascita, genere, codice_fiscale, ore_lavorate)
 
         self.materia_insegnata: str = materia_insegnata
         self.ore_di_lezione: int = ore_di_lezione
@@ -82,7 +90,7 @@ dipendente_1: Dipendente = Dipendente(nome = 'Flavio',
 
 print(persona_1.calcola_età())
 
-print(dipendente_1.nome)
+print(dipendente_1._nome)
 
 print(dipendente_1.ore_lavorate)
 
