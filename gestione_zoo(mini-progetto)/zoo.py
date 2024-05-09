@@ -24,6 +24,16 @@ class Animal:
         self.preferred_habitat: str = preferred_habitat
         self.health: float = healt
 
+    def __str__(self) -> str:
+        
+        return f'Nome:  {self.name}\n\
+                 Specie: {self.species}\n\
+                 Età: {self.age}\n\
+                 Altezza: {self.height}\n\
+                 Larghezza: {self.widht}\n\
+                 Habitat: {self.preferred_habitat}\n\
+                 Salute: {self.health}'
+
 
 class Fence:
     
@@ -54,14 +64,15 @@ class ZooKeeper:
         self.surname: str = surname
         self.id: str = id
 
+    
+
 
     """Consente al guardiano dello zoo di aggiungere un nuovo animale allo zoo. 
     L'animale deve essere collocato in un recinto adeguato in base alle esigenze del suo habitat e se c'è ancora spazio nel recinto, 
     ovvero se l'area del recinto è ancora sufficiente per ospitare questo animale."""
     def add_animal(animal: Animal, fence: Fence):
         
-        name: str = input("Inserisci il nome dell'animale: ")
-        species: str = input("Inserisci la specie dell'animale: ")
+        pass
 
 
     """Consente al guardiano dello zoo di rimuovere un animale dallo zoo. 
@@ -97,3 +108,7 @@ class Zoo:
 
     def describe_zoo():
         pass
+
+
+
+#r1: Animal =  
