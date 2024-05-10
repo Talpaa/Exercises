@@ -1,3 +1,14 @@
+#controlla se una stringa può essere convertita in float
+def is_float(num):
+
+    try:
+        float(num)
+        return True
+    
+    except ValueError:
+
+        return False
+
 class Animal:
 
     #-nome
@@ -18,21 +29,54 @@ class Animal:
         
         self.name: str = name
         self.species: str = species
-        self.age: int = age
-        self.height: float = height
-        self.widht: float = widht
+
+        while (type(age) != int)or(age < 0):
+            
+            print(f'L\'età inserita non è valida')
+
+            age = input(f'Perfavore inserisci un\'età che deve essere positiva ed intera o zero:     ')
+
+            if age.isdigit():
+
+                age = int(age)
+        else:
+            self.age: int = age
+
+        while (type(height) != float)or(height <= 0):
+
+            height = input(f'Perfavore inserisci un\'altezza che deve essere maggiore di zero:     ')
+
+            if is_float(height):
+
+                height = float(height)
+
+        else:
+            self.height: float = height
+
+
+        while (type(height) != float)or(height <= 0):
+
+            height = input(f'Perfavore inserisci un\'altezza che deve essere maggiore di zero:     ')
+
+            if is_float(height):
+
+                height = float(height)
+
+        else:
+            self.widht: float = widht
+            
         self.preferred_habitat: str = preferred_habitat
         self.health: float = healt
 
     def __str__(self) -> str:
         
         return f'Nome:  {self.name}\n\
-                 Specie: {self.species}\n\
-                 Età: {self.age}\n\
-                 Altezza: {self.height}\n\
-                 Larghezza: {self.widht}\n\
-                 Habitat: {self.preferred_habitat}\n\
-                 Salute: {self.health}'
+Specie: {self.species}\n\
+Età: {self.age}\n\
+Altezza: {self.height}\n\
+Larghezza: {self.widht}\n\
+Habitat: {self.preferred_habitat}\n\
+Salute: {self.health}'
 
 
 class Fence:
@@ -83,7 +127,7 @@ class ZooKeeper:
 
         elif(animal.preferred_habitat != fence.habitat):
 
-            print(f'L\'animale che stai provando ad inserire non è adatto all\' habitat di questo recinto' )
+            print(f'L\'animale che stai provando ad inserire non è adatto all\'habitat di questo recinto' )
 
         elif (occupied_space > fence.area):
 
@@ -132,4 +176,7 @@ class Zoo:
 
 
 
-#r1: Animal =  
+a1: Animal =  Animal('a','b',12,12,13.00,'a',100.00)
+
+print(type(a1.age))
+print(a1)
