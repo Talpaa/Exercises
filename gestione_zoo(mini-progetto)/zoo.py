@@ -81,13 +81,13 @@ class Animal:
 
     def __str__(self) -> str:
         
-        return f'Nome:  {self.name}\n\
-Specie: {self.species}\n\
-Età: {self.age}\n\
-Altezza: {self.height}\n\
-Larghezza: {self.widht}\n\
-Habitat: {self.preferred_habitat}\n\
-Salute: {self.health}\n'
+        return f'Nome:  {self.name}\n'\
+            +f'Specie: {self.species}\n'\
+            +f'Età: {self.age}\n'\
+            +f'Altezza: {self.height}\n'\
+            +f'Larghezza: {self.widht}\n'\
+            +f'Habitat: {self.preferred_habitat}\n'\
+            +f'Salute: {self.health}\n'
 
 
 class Fence:
@@ -131,11 +131,16 @@ class Fence:
         self.fauna: list = fauna
 
     def __str__(self) -> str:
+
+        message: str = f'Dimensioni recinto: {self.area} metri quadrati\n'\
+            +f'Temperatura del recinto: {self.temperature}\n'\
+            +f'Habitat del recinto: {self.habitat}\n'\
+            +f'Animali nel recinto:\n'
+        for animal in self.fauna:
+
+            message += f'\n{animal}'
         
-        return f'Dimensioni recinto: {self.area} metri quadrati\n\
-Temperatura del recinto: {self.temperature}\n\
-Habitat del recinto: {self.habitat}\n\
-Animali presenti nel recinto: {self.fauna}\n'
+        return message
 
 
 class ZooKeeper:
@@ -160,7 +165,7 @@ class ZooKeeper:
     ovvero se l'area del recinto è ancora sufficiente per ospitare questo animale."""
     def add_animal(self, animal: Animal, fence: Fence):
         
-        occupied_space: float = round(100*(1/(animal.height * animal.widht)), 3)
+        occupied_space: float = round((animal.height * animal.widht), 3)
 
         if (occupied_space <= fence.area)and(animal.preferred_habitat == fence.habitat):
             
@@ -202,6 +207,13 @@ class ZooKeeper:
     def clean(self, fence: Fence)->float:
         pass
     
+    def __str__(self) -> str:
+        
+        messaggio: str = f'Nome del guardiano dello zoo: {self.name}\n'\
+            +f'Cognome del guardiano dello zoo: {self.surname}\n'\
+            +f'ID del guardiano dello zoo: {self.id}\n'
+        
+        return messaggio
 
 class Zoo:
     
@@ -215,14 +227,32 @@ class Zoo:
         self.zookeeper: ZooKeeper = zookeeper
 
     def describe_zoo(self):
-        pass
+        
+        messaggio: str = f'Zoo:\n'
+
+        return messaggio
 
 
 
-a1: Animal =  Animal('a', 'b', 1, 12, 14, 'c')
+a1: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
+a2: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
+a3: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
+a4: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
 
 print(a1)
 
-f1: Fence = Fence(12, 10, 'a')
+f1: Fence = Fence(1000, 10, 'a')
+
+print(f1)
+
+
+zk1: ZooKeeper = ZooKeeper('a', 'b', '4144')
+
+print(zk1)
+
+zk1.add_animal(animal=a1, fence=f1)
+zk1.add_animal(animal=a2, fence=f1)
+zk1.add_animal(animal=a3, fence=f1)
+zk1.add_animal(animal=a4, fence=f1)
 
 print(f1)
