@@ -57,7 +57,7 @@ class Admin(User):
 
         message: str = super().__str__()
 
-        message += f'\nQuesto profilo è admin e i suoi privileggi sono:\n\n'
+        message += f'\nQuesto profilo è admin e i suoi privileggi sono:\n'
 
         for i in self.privileges:
 
