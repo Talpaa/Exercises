@@ -23,7 +23,12 @@ class User:
     def increment_login_attempts(self):
         
         self.login_attempts += 1
-        print(self.login_attempts)
+        return self.login_attempts
+
+    def reset_login_attempts(self):
+        
+        self.login_attempts = 0
+        return self.login_attempts
 
     def __str__(self) -> str:
         
@@ -48,9 +53,12 @@ print(user2.greet_user())
 print(user3)
 print(user3.greet_user())
 
-user1.increment_login_attempts()
 
-user2.increment_login_attempts()
+print(user1.increment_login_attempts())
+print(user1.increment_login_attempts())
+print(user1.increment_login_attempts())
+print(user1.increment_login_attempts())
 
-user3.increment_login_attempts()
-user1.increment_login_attempts()
+user1.reset_login_attempts()
+
+print(user1.login_attempts)
