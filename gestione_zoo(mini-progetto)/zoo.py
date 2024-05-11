@@ -54,10 +54,6 @@ class Animal:
 
             height = input(f'Per favore inserisci un valore numerico che deve essere maggiore di zero:     ')
 
-            if is_float(height):
-
-                height = float(height)
-
         else:
             self.height: float = float(height)
 
@@ -67,10 +63,6 @@ class Animal:
             print(f'\nLa larghezza dell\'animale inserita non è valida')
 
             widht = input(f'Per favore inserisci un valore numerico che deve essere maggiore di zero:     ')
-
-            if is_float(widht):
-
-                widht = float(widht)
 
         else:
             self.widht: float = float(widht)
@@ -107,10 +99,6 @@ class Fence:
 
             area = input(f'Per favore inserisci un valore numerico che deve essere maggiore di zero:     ')
 
-            if is_float(area):
-
-                area = float(area)
-
         else:
             self.area: float = float(area)
 
@@ -119,10 +107,6 @@ class Fence:
             print(f'\nLa temperatura del recinto inserita non è valida')
 
             temperature = input(f'Per favore inserisci un valore numerico:     ')
-
-            if is_float(temperature):
-
-                temperature = float(temperature)
 
         else:
             self.temperature: float = float(temperature)
@@ -238,6 +222,8 @@ a1: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
 a2: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
 a3: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
 a4: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
+
+test: Animal = Animal('a', 'b', 12, 12, 12, 'a')
 
 print(a1)
 
