@@ -23,8 +23,7 @@ class Fence:
     def __init__(self, 
                  area: float,
                  temperature: float,
-                 habitat: str,
-                 fauna: list = []) -> None:
+                 habitat: str) -> None:
         
         while (not(is_float(area)))or(area <= 0):
 
@@ -46,11 +45,11 @@ class Fence:
 
         self.habitat: str = habitat
         self.remaining_area: float = area
-        self.fauna: list = fauna.copy()
+        self.fauna: list = []
 
     def __str__(self) -> str:
 
-        message: str = f'Fence(Area = {round(self.area, 3)} metri quadrati, '\
+        message: str = f'\nFence(Area = {round(self.area, 3)} metri quadrati, '\
             f'Area rimasta = {round(self.remaining_area, 3)} metri quadrati, '\
                 f'Temperatura: {round(self.remaining_area, 3)} metri quadrati, '\
                     f'Habitat = {self.habitat})\n'\
@@ -121,13 +120,13 @@ class Animal:
 
     def __str__(self) -> str:
         
-        return f'Animal(Nome:  {self.name}, '\
+        return f'\nAnimal(Nome:  {self.name}, '\
             +f'Specie: {self.species}, '\
                 +f'Età: {self.age}, '\
                     +f'Altezza: {self.height}, '\
                         +f'Larghezza: {self.widht}, '\
                             +f'Habitat: {self.preferred_habitat}, '\
-                                +f'Salute: {self.health}), '
+                                +f'Salute: {self.health})\n'
 
 
 
@@ -248,7 +247,7 @@ class ZooKeeper:
     
     def __str__(self) -> str:
         
-        messaggio: str = f'Zookeeper(Nome = {self.name}, Cognome = {self.surname}, ID = {self.id}) \n'
+        messaggio: str = f'\nZookeeper(Nome = {self.name}, Cognome = {self.surname}, ID = {self.id}) \n'
         
         return messaggio
 
@@ -265,7 +264,7 @@ class Zoo:
 
     def describe_zoo(self):
         
-        messaggio: str = f'Zoo:\n'
+        messaggio: str = f'\nZoo:\n'
 
         for i in self.zookeeper:
 
@@ -276,3 +275,32 @@ class Zoo:
             messaggio += f'{j}\n'
 
         return messaggio
+    
+
+zk1: ZooKeeper = ZooKeeper('a', 'b', '4144')
+zk2: ZooKeeper = ZooKeeper('c', 'd', '4145')
+
+f1: Fence = Fence(1000, 10, 'a')
+
+f2: Fence = Fence(2353, 82, 'f')
+
+a1: Animal =  Animal('a', 'a', 1, 12.52, 14, 'a')
+a2: Animal =  Animal('b', 'b', 1, 12.52, 14, 'a')
+
+a3: Animal =  Animal('c', 'd', 1, 12.52, 14, 'f')
+a4: Animal =  Animal('c', 'd', 1, 12.52, 14, 'f')
+
+zk1.add_animal(animal=a1, fence=f1)
+zk1.add_animal(animal=a2, fence=f1)
+
+zk1.add_animal(animal=a3, fence=f2)
+zk1.add_animal(animal=a4, fence=f2)
+
+recinti: list[Fence] = [f1,f2]
+
+
+guardiani: list[ZooKeeper] = [zk1, zk2]
+
+zoo1: Zoo = Zoo(recinti, guardiani)
+
+print(zoo1.describe_zoo())
