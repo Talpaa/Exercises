@@ -56,7 +56,7 @@ class Fence:
 
                 message += f'\n{animal}'
 
-            message += f'\n******************************'
+            message += f'\n\n******************************'
         
         return message
 
@@ -199,7 +199,7 @@ class Zoo:
 
     def describe_zoo(self):
         
-        messaggio: str = f'\nGuardians:'
+        messaggio: str = f'Guardians:'
 
         for i in self.zookeeper:
 
@@ -210,114 +210,3 @@ class Zoo:
             messaggio += f'\n{j}'
 
         return messaggio
-
-
-#da eliminare******************************************************************************************************************************************************************
-print('\n\n\n')
-
-a1: Animal =  Animal('a', 'b', 1, 12, 14, 'a')
-
-print(a1)
-
-a2: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
-a3: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
-a4: Animal =  Animal('a', 'b', 1, 12.52, 14, 'a')
-a5: Animal =  Animal('s', 'f', 4, 23.84, 23, 'j')
-
-
-f1: Fence = Fence(1000, 10, 'a')
-
-print(f1)
-
-
-zk1: ZooKeeper = ZooKeeper('a', 'b', '4144')
-
-print(zk1)
-
-zk1.add_animal(animal=a1, fence=f1)
-zk1.add_animal(animal=a2, fence=f1)
-zk1.add_animal(animal=a3, fence=f1)
-zk1.add_animal(animal=a4, fence=f1)
-
-
-print(f1)
-
-zk1.remove_animal(animal=a1, fence=f1)
-zk1.remove_animal(animal=a2, fence=f1)
-zk1.remove_animal(animal=a3, fence=f1)
-zk1.remove_animal(animal=a4, fence=f1)
-zk1.remove_animal(animal=a5, fence=f1)
-
-print(f1)
-
-print(zk1.clean(f1))
-
-a1: Animal =  Animal('a', 'b', 1, 500, 2, 'a')
-
-
-zk1.add_animal(animal=a1, fence=f1)
-
-print(zk1.clean(f1))
-
-print(a1)
-
-zk1.feed(a1)
-
-print(a1)
-
-zk1.remove_animal(animal=a1, fence=f1)
-
-a1: Animal =  Animal('a', 'b', 1, 400, 2, 'a')
-
-
-
-zk1.add_animal(animal=a1, fence=f1)
-
-
-print(a1)
-
-zk1.feed(a1)
-
-print(a1)
-
-
-
-zk1: ZooKeeper = ZooKeeper('a', 'b', '4144')
-zk2: ZooKeeper = ZooKeeper('c', 'd', '4145')
-
-f1: Fence = Fence(1000, 10, 'a')
-
-f2: Fence = Fence(2353, 82, 'f')
-
-a1: Animal =  Animal('a', 'a', 1, 12.52, 14, 'a')
-a2: Animal =  Animal('b', 'b', 1, 12.52, 14, 'a')
-
-a3: Animal =  Animal('c', 'd', 1, 12.52, 14, 'f')
-a4: Animal =  Animal('c', 'd', 1, 12.52, 14, 'f')
-
-zk1.add_animal(animal=a1, fence=f1)
-zk1.add_animal(animal=a2, fence=f1)
-
-zk1.add_animal(animal=a3, fence=f2)
-zk1.add_animal(animal=a4, fence=f2)
-
-recinti: list[Fence] = [f1,f2]
-
-
-guardiani: list[ZooKeeper] = [zk1, zk2]
-
-zoo1: Zoo = Zoo(recinti, guardiani)
-
-print(zoo1.describe_zoo())
-
-print(f1)
-
-zk1.remove_animal(animal=a1, fence=f1)
-zk1.remove_animal(animal=a2, fence=f1)
-
-zk1.remove_animal(animal=a3, fence=f2)
-zk1.remove_animal(animal=a4, fence=f2)
-
-print(zoo1.describe_zoo())
-
-
