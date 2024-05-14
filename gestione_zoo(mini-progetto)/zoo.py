@@ -210,3 +210,5 @@ class Zoo:
             messaggio += f'\n{j}'
 
         return messaggio
+    
+    
