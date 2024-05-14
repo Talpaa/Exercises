@@ -1,5 +1,4 @@
-#Daniele Taccini
-#controlla se una stringa può essere convertita in float
+#controlla se ciò che è stato passato possa diventare float
 def is_float(num):
 
     try:
@@ -18,10 +17,7 @@ def is_float(num):
     
 
 class Fence:
-    
-    #-area
-    #-temperatura
-    #-habitat
+
     def __init__(self, 
                  area: float,
                  temperature: float,
@@ -48,26 +44,24 @@ class Fence:
 
     def __str__(self) -> str:
 
-        message: str = f'Fence(Area = {round(self.area, 3)} metri quadrati, '\
-            f'Area rimasta = {round(self.remaining_area, 3)} metri quadrati, '\
-                f'Temperatura: {round(self.remaining_area, 3)} metri quadrati, '\
-                    f'Habitat = {self.habitat})\n'\
-                        f'Animali nel recinto:\n'
-        for animal in self.fauna:
+        message: str = ''
+    
+        if (len(self.fauna) > 0):    
 
-            message += f'\n{animal}'
+            message = f'\nFence:\n'\
+                f'\nFence(area={round(self.area, 3)},temperature: {round(self.temperature, 3)},habitat={self.habitat})\n'\
+                    f'\nwith animals:'
+            
+            for animal in self.fauna:
+
+                message += f'\n{animal}'
+
+            message += f'\n******************************'
         
         return message
 
 class Animal:
 
-    #-nome
-    #-specie
-    #-età
-    #-altezza
-    #-larghezza
-    #-habitat
-    #-vita = round(100*(1/età), 3), non è una percentuale
     def __init__(self,
                  name: str,
                  species: str,
@@ -109,21 +103,11 @@ class Animal:
 
     def __str__(self) -> str:
         
-        return f'Animal(Nome:  {self.name}, '\
-            +f'Specie: {self.species}, '\
-                +f'Età: {self.age}, '\
-                    +f'Altezza: {self.height}, '\
-                        +f'Larghezza: {self.widht}, '\
-                            +f'Habitat: {self.preferred_habitat}, '\
-                                +f'Salute: {self.health}), '
-
+        return f'\nAnimal(name={self.name},species:{self.species},età:{self.age})'
 
 
 class ZooKeeper:
-    
-    #-nome
-    #-cognome
-    #-id
+
     def __init__(self,
                  name: str,
                  surname: str,
@@ -133,12 +117,7 @@ class ZooKeeper:
         self.surname: str = surname
         self.id: str = id
 
-    
 
-
-    """Consente al guardiano dello zoo di aggiungere un nuovo animale allo zoo. 
-    L'animale deve essere collocato in un recinto adeguato in base alle esigenze del suo habitat e se c'è ancora spazio nel recinto, 
-    ovvero se l'area del recinto è ancora sufficiente per ospitare questo animale."""
     def add_animal(self, 
                    animal: Animal, 
                    fence: Fence):
@@ -153,17 +132,9 @@ class ZooKeeper:
 
             animal.belong_fence = fence
 
-        elif(animal.preferred_habitat != fence.habitat):
+        return
 
-            print(f'\nL\'animale che stai provando ad inserire non è adatto all\'habitat di questo recinto\n' )
 
-        elif (occupied_space > fence.area):
-
-            print(f'\nL\'animale che stai provando ad inserire è più grande dell\'area rimasta nel recinto\n' )
-
-    """Consente al guardiano dello zoo di rimuovere un animale dallo zoo. 
-    L'animale viene allontanato dal suo recinto. 
-    L'area del recinto viene ripristinata dello spazio che l'animale rimosso occupava."""
     def remove_animal(self, 
                       animal: Animal, 
                       fence: Fence):
@@ -175,14 +146,7 @@ class ZooKeeper:
             fence.remaining_area += occupied_space
             fence.fauna.remove(animal)
 
-        else:
 
-            print(f'\nL\'animale che stai provando a rimuovere non è presente in questo recinto\n')
-
-    """Consente al guardiano dello zoo di nutrire tutti gli animali dello zoo. 
-    Ogni volta che un animale viene nutrito, la sua salute(health) incrementa di 1% rispetto alla sua salute corrente, 
-    e le dimensioni dell'animale (height e width) vengono incrementate del 2%. 
-    L'animale si può nutrire soltanto se il recinto ha ancora spazio a sufficienza per ospitare l'animale ingrandito dal cibo."""
     def feed(self, 
              animal: Animal):
         
@@ -200,28 +164,12 @@ class ZooKeeper:
                 animal.widht = increased_width
                 animal.health = round((animal.health + (animal.health/100)), 3)
 
-                print(f'\nL\'animale è stato nutrito\n')
 
-            else:
-
-                print(f'\nNon puoi nutrire l\'animale scelto perchè una volta nutrito non entrerebbe più nel recinto\n')
-
-        else:
-
-            print(f'L\'animale che vuoi nutrire non è in questo recinto\n')
-
-    """Consente al guardiano dello zoo di pulire tutti i recinti dello zoo. 
-    Questo metodo restituisce un valore di tipo float che indica il tempo che il guardiano impiega per pulire il recinto. 
-    Il tempo di pulizia è il rapporto dell'area occupata dagli animali diviso l'area residua del recinto. Se l'area residua è pari a 0, restituire l'area occupata."""
     def clean(self, 
               fence: Fence)->float:
         
         time: float = 0.0
 
-        #dimensione area occupata
-        #area_occupata: float = fence.area - fence.remaining_area
-
-        #percentuale area occupata
         area_occupata: float = round((fence.area - fence.remaining_area), 3)
 
         if fence.remaining_area > 0.0:
@@ -236,14 +184,12 @@ class ZooKeeper:
     
     def __str__(self) -> str:
         
-        messaggio: str = f'Zookeeper(Nome = {self.name}, Cognome = {self.surname}, ID = {self.id}) \n'
+        messaggio: str = f'\nZookeeper(name={self.name},surname={self.surname},id={self.id})'
         
         return messaggio
 
 class Zoo:
     
-    #-recinzioni
-    #-guardiani dello zoo
     def __init__(self,
                  fence: list[Fence] = [],
                  zookeeper: list[ZooKeeper] = []) -> None:
@@ -253,15 +199,15 @@ class Zoo:
 
     def describe_zoo(self):
         
-        messaggio: str = f'Zoo:\n'
+        messaggio: str = f'\nGuardians:'
 
         for i in self.zookeeper:
 
-            messaggio += f'{i}\n'
+            messaggio += f'\n{i}'
 
         for j in self.fence:
 
-            messaggio += f'{j}\n'
+            messaggio += f'\n{j}'
 
         return messaggio
 
@@ -366,6 +312,12 @@ print(zoo1.describe_zoo())
 
 print(f1)
 
+zk1.remove_animal(animal=a1, fence=f1)
+zk1.remove_animal(animal=a2, fence=f1)
 
+zk1.remove_animal(animal=a3, fence=f2)
+zk1.remove_animal(animal=a4, fence=f2)
+
+print(zoo1.describe_zoo())
 
 
