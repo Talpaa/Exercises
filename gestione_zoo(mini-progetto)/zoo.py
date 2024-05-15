@@ -22,7 +22,7 @@ class Fence:
                  area: float,
                  temperature: float,
                  habitat: str,
-                 fauna: list = []) -> None:
+                 fence: list = []) -> None:
         
         if (not(is_float(area)))or(area <= 0):
 
@@ -40,19 +40,19 @@ class Fence:
 
         self.habitat: str = habitat
         self.remaining_area: float = area
-        self.fauna: list = fauna.copy()
+        self.fence: list = fence.copy()
 
     def __str__(self) -> str:
 
         message: str = ''
     
-        if (len(self.fauna) > 0):    
+        if (len(self.fence) > 0):    
 
             message = f'\nFence:\n'\
                 f'\nFence(area={round(self.area, 3)},temperature: {round(self.temperature, 3)},habitat={self.habitat})\n'\
                     f'\nwith animals:'
             
-            for animal in self.fauna:
+            for animal in self.fence:
 
                 message += f'\n{animal}'
 
@@ -67,7 +67,7 @@ class Animal:
                  species: str,
                  age: int,
                  height: float,
-                 widht: float,
+                 width: float,
                  preferred_habitat: str,
                  belong_fence: Fence = '') -> None:
         
@@ -88,12 +88,12 @@ class Animal:
             self.height: float = float(height)
 
 
-        while (not(is_float(widht)))or(widht <= 0):
+        while (not(is_float(width)))or(width <= 0):
 
             return
 
         else:
-            self.widht: float = float(widht)
+            self.width: float = float(width)
             
         self.preferred_habitat: str = preferred_habitat
 
@@ -122,11 +122,11 @@ class ZooKeeper:
                    animal: Animal, 
                    fence: Fence):
         
-        occupied_space: float = round((animal.height * animal.widht), 3)
+        occupied_space: float = round((animal.height * animal.width), 3)
 
         if (occupied_space <= fence.remaining_area)and(animal.preferred_habitat == fence.habitat):
             
-            fence.fauna.append(animal)
+            fence.fence.append(animal)
 
             fence.remaining_area -= occupied_space
 
@@ -139,30 +139,35 @@ class ZooKeeper:
                       animal: Animal, 
                       fence: Fence):
         
-        if animal in fence.fauna:
+        if animal in fence.fence:
 
-            occupied_space: float = round((animal.height * animal.widht), 3)
+            occupied_space: float = round((animal.height * animal.width), 3)
 
             fence.remaining_area += occupied_space
-            fence.fauna.remove(animal)
+            fence.fence.remove(animal)
 
 
     def feed(self, 
              animal: Animal):
         
-        if animal in animal.belong_fence.fauna:
+        if animal in animal.belong_fence.fence:
             increased_height: float = round((animal.height + ((animal.height/100)*2)), 3)
-            increased_width: float = round((animal.widht + ((animal.widht/100)*2)), 3)
+            increased_width: float = round((animal.width + ((animal.width/100)*2)), 3)
 
-            dim_re: float = round((animal.belong_fence.remaining_area + (animal.height * animal.widht)), 3)
+            dim_re: float = round((animal.belong_fence.remaining_area + (animal.height * animal.width)), 3)
 
             increased_animal: float = round((increased_height * increased_width), 3)
 
             if dim_re >= increased_animal:
 
+                animal.belong_fence.remaining_area += (animal.height * animal.width)
                 animal.height = increased_height
-                animal.widht = increased_width
+                animal.width = increased_width
+                animal.belong_fence.remaining_area -= (animal.height * animal.width)
+                
                 animal.health = round((animal.health + (animal.health/100)), 3)
+                
+                
 
 
     def clean(self, 
@@ -211,4 +216,17 @@ class Zoo:
 
         return messaggio
     
+    a1: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
+
+    f1: Fence = Fence(area=10000,temperature=12,habitat='a')
+
+    zk1: ZooKeeper = ZooKeeper(name='a',surname='a',id='5213')
+
+    zk1.add_animal(a1,f1)
+
+    print(f1.remaining_area)
+
+    zk1.feed(a1)
+    
+    print(f1.remaining_area)
     
