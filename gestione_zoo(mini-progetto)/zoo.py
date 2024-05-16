@@ -215,18 +215,37 @@ class Zoo:
             messaggio += f'\n{j}'
 
         return messaggio
+
+
+
+'''
+a1: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
+a2: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
+
+f1: Fence = Fence(area=10000,temperature=12,habitat='a')
+
+zk1: ZooKeeper = ZooKeeper(name='a',surname='a',id='5213')
+
+zk1.add_animal(a1,f1)
+zk1.add_animal(a2, f1)
+
+recinti: list[Fence] = [f1]
+guardiani: list[ZooKeeper] = [zk1]
+
+z1: Zoo = Zoo(recinti, guardiani)
+
+print(f1.remaining_area)
+
+zk1.feed(a1)
     
-    a1: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
+print(f1.remaining_area)
 
-    f1: Fence = Fence(area=10000,temperature=12,habitat='a')
+zk1.feed(a2)
 
-    zk1: ZooKeeper = ZooKeeper(name='a',surname='a',id='5213')
+print(f1.remaining_area)
 
-    zk1.add_animal(a1,f1)
+print(z1.describe_zoo())
+'''
 
-    print(f1.remaining_area)
 
-    zk1.feed(a1)
-    
-    print(f1.remaining_area)
     
