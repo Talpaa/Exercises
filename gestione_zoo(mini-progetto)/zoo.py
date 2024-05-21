@@ -22,7 +22,7 @@ class Fence:
                  area: float,
                  temperature: float,
                  habitat: str,
-                 fence: list = []) -> None:
+                 animals: list = []) -> None:
         
         if (not(is_float(area)))or(area <= 0):
 
@@ -40,19 +40,19 @@ class Fence:
 
         self.habitat: str = habitat
         self.remaining_area: float = area
-        self.fence: list = fence.copy()
+        self.animals: list = animals.copy()
 
     def __str__(self) -> str:
 
         message: str = ''
     
-        if (len(self.fence) > 0):    
+        if (len(self.animals) > 0):    
 
             message = f'\nFence:\n'\
                 f'\nFence(area={round(self.area, 3)},temperature: {round(self.temperature, 3)},habitat={self.habitat})\n'\
                     f'\nwith animals:'
             
-            for animal in self.fence:
+            for animal in self.animals:
 
                 message += f'\n{animal}'
 
@@ -69,7 +69,7 @@ class Animal:
                  height: float,
                  width: float,
                  preferred_habitat: str,
-                 belong_fence: Fence = '') -> None:
+                 fence: Fence = '') -> None:
         
         self.name: str = name
         self.species: str = species
@@ -99,7 +99,7 @@ class Animal:
 
         self.health: float = round(100*(1/self.age), 3)
 
-        self.belong_fence: Fence = belong_fence
+        self.fence: Fence = fence
 
     def __str__(self) -> str:
         
@@ -122,15 +122,15 @@ class ZooKeeper:
                    animal: Animal, 
                    fence: Fence):
         
-        occupied_space: float = round((animal.height * animal.width), 3)
+        occupied_space: float = animal.height * animal.width
 
         if (occupied_space <= fence.remaining_area)and(animal.preferred_habitat == fence.habitat):
             
-            fence.fence.append(animal)
+            fence.animals.append(animal)
 
             fence.remaining_area -= occupied_space
 
-            animal.belong_fence = fence
+            animal.fence = fence
 
         return
 
@@ -139,33 +139,33 @@ class ZooKeeper:
                       animal: Animal, 
                       fence: Fence):
         
-        if animal in fence.fence:
+        if animal in fence.animals:
 
-            occupied_space: float = round((animal.height * animal.width), 3)
+            occupied_space: float = animal.height * animal.width
 
             fence.remaining_area += occupied_space
-            fence.fence.remove(animal)
+            fence.animals.remove(animal)
 
 
     def feed(self, 
              animal: Animal):
         
-        if animal in animal.belong_fence.fence:
-            increased_height: float = round((animal.height + ((animal.height/100)*2)), 3)
-            increased_width: float = round((animal.width + ((animal.width/100)*2)), 3)
+        if animal in animal.fence.animals:
+            increased_height: float = animal.height + ((animal.height/100)*2)
+            increased_width: float = animal.width + ((animal.width/100)*2)
 
-            dim_re: float = round((animal.belong_fence.remaining_area + (animal.height * animal.width)), 3)
+            dim_re: float = animal.fence.remaining_area + (animal.height * animal.width)
 
-            increased_animal: float = round((increased_height * increased_width), 3)
+            increased_animal: float = increased_height * increased_width
 
             if dim_re >= increased_animal:
 
-                animal.belong_fence.remaining_area += (animal.height * animal.width)
+                animal.fence.remaining_area += (animal.height * animal.width)
                 animal.height = increased_height
                 animal.width = increased_width
-                animal.belong_fence.remaining_area -= (animal.height * animal.width)
+                animal.fence.remaining_area -= (animal.height * animal.width)
                 
-                animal.health = round((animal.health + (animal.health/100)), 3)
+                animal.health = animal.health + (animal.health/100)
                 
                 
 
@@ -175,7 +175,7 @@ class ZooKeeper:
         
         time: float = 0.0
 
-        area_occupata: float = round((fence.area - fence.remaining_area), 3)
+        area_occupata: float = fence.area - fence.remaining_area
 
         if fence.remaining_area > 0.0:
 
