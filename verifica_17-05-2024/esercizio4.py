@@ -1,54 +1,20 @@
-def valid_sudoku_line(linea: list):
+#controlla per ogni lista che gli viene inviata che non ci siano doppioni
+def find_duplicates(linea: list):
+            
+    cifre: list = ['1','2','3','4','5','6','7','8','9']
 
     for i in linea:
 
-        if not(i == "."):
-        
-            count: int = 0
-
-            for j in linea:
-
-                if i == j:
-
-                    count += 1
-
-            if count > 1:
-
-                return False
-            
-    return True
-
-def valid_sudoku_column(colonna: list):
-    
-    cifre: list = ['1','2','3','4','5','6','7','8','9']
-
-    for i in colonna:
-
-        if i in cifre:
+        if (i in cifre):
 
             cifre.remove(i)
 
-        else: 
+        elif(not(i == '.')): 
 
             return False
         
     return True
 
-def valid_sudoku_box(box: list):
-    
-    cifre: list = ['1','2','3','4','5','6','7','8','9']
-
-    for i in box:
-
-        if i in cifre:
-
-            cifre.remove(i)
-
-        else: 
-
-            return False
-        
-    return True
 
 def valid_sudoku(board: list[list[str]]) -> bool:
     # la tavola del sudo viene rapperentata come una matrice (lista di liste)
@@ -56,44 +22,42 @@ def valid_sudoku(board: list[list[str]]) -> bool:
     
     valid: bool = True
 
-    for l in board:
+    #invia alla funzione find_duplicates ogni linea del sudoku per cercare doppioni
+    for lin in board:
 
-        valid = valid_sudoku_line(l)
+        valid = find_duplicates(lin)
 
         if not(valid):
 
             return valid
         
-    
-    for n in range(0,9):
+    #permette di creare una lista per ogni colonna del sudoku, per poi inviarla a find_duplicates
+    for lin in range(9):
 
         colonna: list = []
 
-        for c in board:
+        for col in board:
 
-            if not(c[n] == '.'):
-                colonna.append(c[n])
+            colonna.append(col[lin])
 
-        valid = valid_sudoku_column(colonna)
+        valid = find_duplicates(colonna)
 
         if not(valid):
 
             return valid
 
-    #permette di creare una lista del riquadro in alto a sinistra del sudoku
+    #permette di creare una lista per ogni riquadro del sudoku, per poi inviarla a find_duplicates
     box: list = []
     for i in board:
 
-        for n in range(0,3):
+        for n in range(3):
 
-            if not(i[n] == '.'):
-
-                box.append(i[n])
+            box.append(i[n])
 
         ind: int = (board.index(i))+1
         if (ind % 3) == 0:
 
-            valid = valid_sudoku_box(box)
+            valid = find_duplicates(box)
 
             if not(valid):
 
@@ -106,14 +70,12 @@ def valid_sudoku(board: list[list[str]]) -> bool:
 
         for n in range(3,6):
 
-            if not(i[n] == '.'):
-
-                box.append(i[n])
+            box.append(i[n])
 
         ind: int = (board.index(i))+1
         if (ind % 3) == 0:
 
-            valid = valid_sudoku_box(box)
+            valid = find_duplicates(box)
 
             if not(valid):
 
@@ -126,14 +88,12 @@ def valid_sudoku(board: list[list[str]]) -> bool:
 
         for n in range(6,9):
 
-            if not(i[n] == '.'):
-
-                box.append(i[n])
+            box.append(i[n])
 
         ind: int = (board.index(i))+1
         if (ind % 3) == 0:
 
-            valid = valid_sudoku_box(box)
+            valid = find_duplicates(box)
 
             if not(valid):
 
