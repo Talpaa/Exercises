@@ -218,9 +218,9 @@ class Zoo:
 
 
 
-'''
+
 a1: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
-a2: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
+a2 = Animal(name="Toledo", species="Fox", age=16, height=0.5, width=1.25, preferred_habitat="a")
 
 f1: Fence = Fence(area=10000,temperature=12,habitat='a')
 
@@ -245,7 +245,10 @@ zk1.feed(a2)
 print(f1.remaining_area)
 
 print(z1.describe_zoo())
-'''
+
+print(a2.height)
+print(a2.width)
+
 
 
     
