@@ -45,18 +45,26 @@ def memorizza_file(files: list[int]) -> None:
 
         blocchi_usati: int = file_compresso / 512.0
 
-        if is_float(blocchi_usati):
 
-            int(blocchi_usati)
-            blocchi_usati += 1
+        blocchi_usati = int(round(blocchi_usati, 0))
 
-        spazio_totale_blocchi -= blocchi_usati
 
-        print(f"File di {file} byte compresso in {file_compresso}byte e memorizzato. Blocchi usati: {blocchi_usati}. Blocchi rimanenti: {spazio_totale_blocchi}.")
-    return
+        if (blocchi_usati <= spazio_totale_blocchi):
 
+            spazio_totale_blocchi -= blocchi_usati
+            print(f"File di {file} byte compresso in {file_compresso} byte e memorizzato. Blocchi usati: {blocchi_usati}. Blocchi rimanenti: {spazio_totale_blocchi}.")
+
+        else:
+
+            print(f'Non è possibile memorizzare il file di {file} byte. Spazio insufficiente.')
+            return
+
+        
+    
+print('\n\n\n')
 memorizza_file([1100, 20000, 1048576, 512, 5000])
-
+	
+memorizza_file([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])
 	
 '''
 File di 1100 byte compresso in 880.0 byte e memorizzato. Blocchi usati: 2. Blocchi rimanenti: 998.
