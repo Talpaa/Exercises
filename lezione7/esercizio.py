@@ -5,23 +5,22 @@ class Percorso:
 
     def __init__(self) -> None:
         
-        self.caselle: list = ['-' for _ in range(70)]
-        self.meteo: bool = False #se è True c'è il sole, se è False c'è pioggia
+        self.caselle: list = []
+        self.meteo: bool = True #se è True c'è pioggia, se è False c'è il sole
         self.ostacoli: dict = {14: 3, 29: 5, 44: 7}
         self.bonus: dict = {9: 3, 24: 5, 49: 10}
 
     def add_element(self):
 
+        self.caselle = ['-' for _ in range(70)]
+
         for key in self.bonus:
 
-            print(key)
             self.caselle.pop(key)
             self.caselle.insert(key, 'bonus')
 
         for key in self.ostacoli:
 
-            print(key)
-            
             self.caselle.pop(key)
             self.caselle.insert(key, 'trap')
 
@@ -32,7 +31,7 @@ class Percorso:
 
            
 
-class Animale:
+class Concorrente:
 
     def __init__(self) -> None:
         
@@ -42,7 +41,7 @@ class Animale:
 
 
 
-class Tartaruga(Animale):
+class Tartaruga(Concorrente):
 
     def __init__(self) -> None:
         super().__init__()
@@ -50,60 +49,39 @@ class Tartaruga(Animale):
     def spostamento(self, meteo: bool):
 
         self.passo = randint(1,10)
+        flag_t: bool = True
 
         if (self.passo <= 5)and(self.energia >= 5):
 
-            if meteo:
-                self.casella += 3
-            else:
-                self.casella += 2
-
+            self.casella += 3
             self.energia -= 5
 
         elif (self.passo <= 8)and(self.energia >= 3):
 
-            if meteo:
-                self.casella += 1
-
+            self.casella += 1
             self.energia -= 3
 
         elif (self.passo <= 10)and(self.energia >= 10):
 
-            if self.casella <= 6:
-
-                self.casella = 0
-
-            else:
-
-                if meteo:
-                    self.casella -= 6
-                else:
-                    self.casella -= 7
-
+            self.casella -= 6
             self.energia -= 10
-
         else:
+            flag_t = False
+            self.energia += 10
 
-            if (self.energia + 10) > 100:
-
-                self.energia = 100
-
-            else:
-                self.energia += 10
+        if (meteo)and(flag_t):
+            self.casella += -1
 
         if self.energia < 0:
-
             self.energia = 0
 
-        elif self.energia > 100:
-            
+        elif self.energia > 100:         
             self.energia = 100
 
         if self.casella < 0:
-
             self.casella = 0
 
-class Lepre(Animale):
+class Lepre(Concorrente):
 
     def __init__(self) -> None:
         super().__init__()
@@ -111,81 +89,49 @@ class Lepre(Animale):
     def spostamento(self, meteo: bool):
 
         self.passo = randint(1,10)
+        flag_l: bool = True
 
-        if (self.passo <= 2):
+        #Grande balzo
+        if  (self.passo <= 2)and(self.energia >= 15):
 
-            if not(meteo):
+            self.casella += 9
+            self.energia -= 15
 
-                self.casella -= 2
+        # Grande scivolata
+        elif (self.passo <= 3)and(self.energia >= 20):
 
-            if (self.energia + 10) > 100:
-
-                self.energia = 100
-
-            else:
-
-                self.energia += 10
-
-
-        elif  (self.passo <= 4)and(self.energia >= 15):
-
-            if meteo:
-                self.casella += 9
-            else:
-                self.casella += 7
-
-            self.energia += 15
-
-        elif (self.passo <= 5)and(self.energia >= 20):
-
-            if self.casella <= 12:
-
-                self.casella = 0
-
-            else:
-
-                if meteo:
-                    self.casella -= 12
-                else:
-                    self.casella -= 14
-
+            self.casella -= 12
             self.energia -= 20
 
-        elif (self.passo <= 8)and(self.energia >= 5):
+        # Piccolo balzo
+        elif (self.passo <= 6)and(self.energia >= 5):
 
-            if meteo:
-                self.casella += 1
-
-            else: 
-                self.casella -= 1
-
+            self.casella += 1
             self.energia -= 5
+        #Piccola scivolata
+        elif (self.passo <= 8)and(self.energia >= 8):
 
-        elif (self.passo <= 10)and(self.energia >= 8):
-
-            if self.casella <= 2:
-
-                self.casella = 0
-
-            else:
-
-                if meteo:
-                    self.casella -= 2
-                else:
-                    self.casella -= 4
-
+            self.casella -= 2 
             self.energia -= 8
 
-        if self.energia < 0:
+        #Riposo
+        elif(self.passo <= 10):
 
+            flag_l: bool = False
+
+            self.energia += 10
+
+
+        if (meteo)and(flag_l):
+            self.casella += -1
+
+        if self.energia < 0:
             self.energia = 0
 
-        elif self.energia > 100:
-            
+        elif self.energia > 100: 
             self.energia = 100
 
         if self.casella < 0:
-
             self.casella = 0
 
 
@@ -215,6 +161,7 @@ while (tartaruga.casella < 69)and(lepre.casella < 69):
     tartaruga.spostamento(percorso.meteo)
     lepre.spostamento(percorso.meteo)
 
+    #controllo se uno dei due concorrenti sia finito sulla casella con un malus o con un bonus 
     if tartaruga.casella in percorso.ostacoli:
 
         tartaruga.casella -= percorso.ostacoli[tartaruga.casella]
@@ -230,91 +177,55 @@ while (tartaruga.casella < 69)and(lepre.casella < 69):
     elif tartaruga.casella in percorso.ostacoli:
 
         lepre.casella += percorso.ostacoli[lepre.casella]
-        
+    
     posizione_t: int = tartaruga.casella
+    if posizione_t > 69:
+        posizione_t = 69
+        
     posizione_l: int = lepre.casella
+    if posizione_l > 69:
+        posizione_l = 69
 
+    percorso.add_element()
 
     if (tartaruga.casella == lepre.casella):
 
-        if ('L' in percorso.caselle)and('T' in percorso.caselle):
+        if percorso.caselle[posizione_t] == '-':
+            percorso.caselle[posizione_t ] == 'OUCH!!!'
 
-            var1: int = percorso.caselle.index('L')
-            percorso.caselle[var1] = '-'
-            
-            var2: int = percorso.caselle.index('T')
-            percorso.caselle[var2] = '-'
+        elif percorso.caselle[posizione_t -1] == '-':
+            percorso.caselle[posizione_t -1] == 'OUCH!!!'
 
-        elif ('OUCH!!!' in percorso.caselle):
-
-            var1 = percorso.caselle.index('OUCH!!!')
-            percorso.caselle[var1] = '-'
-
-        else:
-
-            if percorso.caselle[len(percorso.caselle)-1] == '-':
-                percorso.caselle.pop(len(percorso.caselle)-1)
-
-            elif percorso.caselle[len(percorso.caselle)-2] == '-':
-                percorso.caselle.pop(len(percorso.caselle)-2)
-
-            elif percorso.caselle[len(percorso.caselle)-3] == '-':
-                percorso.caselle.pop(len(percorso.caselle)-3)
-
-        percorso.caselle[posizione_t ] = 'OUCH!!!'
+        elif percorso.caselle[posizione_t +1] == '-':
+            percorso.caselle[posizione_t +1] == 'OUCH!!!'
 
     else:
-
-        if ('L' in percorso.caselle)and('T' in percorso.caselle):
-
-            var1 = percorso.caselle.index('L')
-            percorso.caselle[var1] = '-'
-            
-            var2 = percorso.caselle.index('T')
-            percorso.caselle[var2] = '-'
-
-        elif ('OUCH!!!' in percorso.caselle):
-
-            percorso.caselle.remove('OUCH!!!')
-            
-            if percorso.caselle[len(percorso.caselle)-1] == '-':
-                percorso.caselle.pop(len(percorso.caselle)-1)
-
-            elif percorso.caselle[len(percorso.caselle)-2] == '-':
-                percorso.caselle.pop(len(percorso.caselle)-2)
-
-            elif percorso.caselle[len(percorso.caselle)-3] == '-':
-                percorso.caselle.pop(len(percorso.caselle)-3)
-
-        else:
-            
-            if percorso.caselle[posizione_t] == '-':
+    
+        if percorso.caselle[posizione_t] == '-':
 
                 percorso.caselle[posizione_t] = 'T'
 
-            elif percorso.caselle[posizione_t-1] == '-':
+        elif percorso.caselle[posizione_t-1] == '-':
 
-                percorso.caselle[posizione_t] = 'T'
+                percorso.caselle[posizione_t-1] = 'T'
 
-            elif percorso.caselle[posizione_t+1] == '-':
+        elif percorso.caselle[posizione_t+1] == '-':
 
-                percorso.caselle[posizione_t] = 'T'     
+                percorso.caselle[posizione_t+1] = 'T'     
 
 
-            if percorso.caselle[posizione_l] == '-':
+        if percorso.caselle[posizione_l] == '-':
             
                 percorso.caselle[posizione_l] = 'L'
 
-            elif percorso.caselle[posizione_l-1] == '-':
+        elif percorso.caselle[posizione_l-1] == '-':
             
-                percorso.caselle[posizione_l] = 'L'
+                percorso.caselle[posizione_l-1] = 'L'
 
-            elif percorso.caselle[posizione_l+1] == '-':
+        elif percorso.caselle[posizione_l+1] == '-':
             
-                percorso.caselle[posizione_l] = 'L'
+                percorso.caselle[posizione_l+1] = 'L'
 
-
-    print(len(percorso.caselle))
 
     for i in percorso.caselle:
 
@@ -322,15 +233,15 @@ while (tartaruga.casella < 69)and(lepre.casella < 69):
 
     #print(f'Lepre: {lepre.casella}, {lepre.energia}\nTartaruga: {tartaruga.casella}, {tartaruga.energia}')
     print(f'{message}\n')
-
     message = ''
 
 
-if (tartaruga.casella >= 70)and(lepre.casella >= 70):
+
+if (tartaruga.casella >= 69)and(lepre.casella >= 69):
 
     print(f"IT'S A TIE.")
 
-elif tartaruga.casella >= 70:
+elif tartaruga.casella >= 69:
 
     print(f"TORTOISE WINS! || VAY!!!")
 
