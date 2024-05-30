@@ -19,42 +19,35 @@ class Magazzino:
         if prodotto not in self.prodotti:
 
             self.prodotti.append(prodotto)
-            print(f'Il prodotto è stato aggiunto in magazzino.\n')
+            print(f'{prodotto.nome.title()} è stata/o aggiunta/o in magazzino.\n')
 
         else:
 
-            print(f'Il prodotto è già presente in magazzino.\n')
+            print(f'{prodotto.nome.title()} è già presente in magazzino.\n')
 
     def cerca_prodotto(self, 
                        nome: str) -> Prodotto:
-        
+
         for prodotto in self.prodotti:
 
             if prodotto.nome.lower() == nome.lower():
 
                 return prodotto
-            
-            else:
-
-                print(f'Il prodotto non è presente in magazzino.\n')    
+        print(f'{nome.title()} non è presente in magazzino.\n')    
 
     def verifica_disponibilità(self,
                                nome: str) -> str:
-        
-        message: str = ''
         
         for prodotto in self.prodotti:
 
             if prodotto.nome.lower() == nome.lower():
 
-                return f'Il prodotto è presente in magazzino con {prodotto.quantità} unità.\n'
-            
-            else:
+                return f'{prodotto.nome.title()} è presente in magazzino con {prodotto.quantità} unità.\n' 
 
-                message = f'Il prodotto non è presente in magazzino.\n'
+        return f'{prodotto.nome.title()} non è presente in magazzino.\n'
 
-        return message
-
+print()
+print()
 #Magazino
 magazzino: Magazzino = Magazzino()
 
@@ -78,10 +71,11 @@ magazzino.aggiungi_prodotto(matita)
 
 magazzino.aggiungi_prodotto(matita)
 
-magazzino.cerca_prodotto(nome='Colla')
+
+magazzino.cerca_prodotto(nome='colla')
 magazzino.cerca_prodotto(nome='Penna')
 
-magazzino.verifica_disponibilità(nome='Forbice')
-magazzino.verifica_disponibilità(nome='Gomma')
+print(magazzino.verifica_disponibilità(nome='Forbice'))
+print(magazzino.verifica_disponibilità(nome='Gomma'))
 
 
