@@ -79,23 +79,15 @@ class Cinema:
                      titolo_film: str, 
                      num_posti: int)-> str:
 
-        flag: bool = True
-        
         for sala in self.sale:
 
             if titolo_film.lower() == sala.film.titolo.lower():
 
-                message: str = f'{sala.prenota_posti(num_posti)}'
+                return f'{sala.prenota_posti(num_posti)}'
 
-                flag = False
 
-        if flag:
+        return f'Il film non è presente in nessuna sala.\n'
 
-            return f'Il film non è presente in nessuna sala.\n'
-        
-        else:
-
-            return message
         
 
 #cinema
