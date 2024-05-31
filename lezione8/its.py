@@ -1,6 +1,4 @@
-from typing import Any
-   
-
+#from typing import Any
 class Room:
 
     def __init__(self,
@@ -22,7 +20,7 @@ class Room:
         return self.id
 
 
-    def __str__(self, name: str, value: Any) -> None:
+    def __str__(self) -> str:
         
         return f'Room(id={self.id}, floor{self.floor}, seats={self.seats})'
 
@@ -50,7 +48,7 @@ class Building:
     def add_room(self, room: Room):
 
         if room not in self.rooms\
-            and (room.get_floor() <= self.get_num_floors):
+            and (room.get_floor() <= self.get_num_floors()):
 
             self.rooms.append(room)
 
