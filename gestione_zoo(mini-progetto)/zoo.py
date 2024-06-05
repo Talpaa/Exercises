@@ -1,5 +1,6 @@
 #controlla se ciò che è stato passato possa diventare float
-def is_float(num):
+from typing import Any
+def is_float(num: Any):
 
     try:
         float(num)
@@ -22,7 +23,7 @@ class Fence:
                  area: float,
                  temperature: float,
                  habitat: str,
-                 animals: list = []) -> None:
+                 animals: list[Any] = []) -> None:
         
         if (not(is_float(area)))or(area <= 0):
 
@@ -40,7 +41,7 @@ class Fence:
 
         self.habitat: str = habitat
         self.remaining_area: float = area
-        self.animals: list = animals.copy()
+        self.animals: list[Any] = animals.copy()
 
     def __str__(self) -> str:
 
@@ -68,8 +69,7 @@ class Animal:
                  age: int,
                  height: float,
                  width: float,
-                 preferred_habitat: str,
-                 fence: Fence = '') -> None:
+                 preferred_habitat: str) -> None:
         
         self.name: str = name
         self.species: str = species
@@ -99,7 +99,7 @@ class Animal:
 
         self.health: float = round(100*(1/self.age), 3)
 
-        self.fence: Fence = fence
+        self.fence: Fence = Fence(0, 0, 'a', [])
 
     def __str__(self) -> str:
         
@@ -220,7 +220,7 @@ class Zoo:
 
 
 a1: Animal = Animal(name='a',species='a',age=1,height=12,width=32,preferred_habitat='a')
-a2 = Animal(name="Toledo", species="Fox", age=16, height=0.5, width=1.25, preferred_habitat="a")
+a2: Animal = Animal(name="Toledo", species="Fox", age=16, height=0.5, width=1.25, preferred_habitat="a")
 
 f1: Fence = Fence(area=10000,temperature=12,habitat='a')
 
