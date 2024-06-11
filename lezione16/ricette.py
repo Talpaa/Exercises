@@ -6,19 +6,15 @@ class RecipeManager:
 
     def create_recipe(self, name: str, ingredients: list [str]):
 
-        name = name.title()
-
+        #name = name.title()
+        
         if name not in self.ricettario:
 
-            ingredienti: list[str] = []
             ricettario: dict[str, list[str]] = {}
 
-            for ingrediente in ingredients:
-                ingredienti.append(ingrediente.casefold())
 
-            self.ricettario[name] = ingredienti
-            ricettario[name] = ingredienti
-            return ricettario
+            self.ricettario[name] = ingredients
+            return self.ricettario
 
         else:
 
@@ -27,21 +23,24 @@ class RecipeManager:
 
     def add_ingredient(self, recipe_name: str, ingredient: str):
 
-        recipe_name = recipe_name.title()
-        ingredient = ingredient.casefold()
+        #recipe_name = recipe_name.title()
+        #ingredient = ingredient.title()
+        message: str = '{'
 
         if recipe_name in self.ricettario:
             
             for ingredient_in_list in self.ricettario[recipe_name]:
 
-                if ingredient_in_list.casefold() == ingredient:
+                if ingredient_in_list == ingredient:
 
                     return f'Errore: Ingrediente già presente nella ricetta'
 
             
             self.ricettario[recipe_name].append(ingredient)
+            message += f'\'{recipe_name}\': {self.ricettario[recipe_name]}'
+            message += '}'
 
-            return f'{recipe_name}: {self.ricettario[recipe_name]}'
+            return message
 
 
         else:
@@ -51,22 +50,24 @@ class RecipeManager:
     
     def remove_ingredient(self, recipe_name: str, ingredient: str):
 
-        recipe_name = recipe_name.title()
-        ingredient = ingredient.casefold()
+        #recipe_name = recipe_name.title()
+        #ingredient = ingredient.title()
         controllo: bool = False
 
         if recipe_name in self.ricettario:
             
             for ingredient_in_list in self.ricettario[recipe_name]:
 
-                if ingredient_in_list.casefold() == ingredient:
+                if ingredient_in_list == ingredient:
 
                     controllo = True
                 
             if controllo:
-
+                message: str = '{\''
                 self.ricettario[recipe_name].remove(ingredient)
-                return f'{recipe_name}: {self.ricettario[recipe_name]}'
+                message += f'{recipe_name}\': {self.ricettario[recipe_name]}'
+                message += '}'
+                return message
 
             else:
                 
@@ -74,9 +75,11 @@ class RecipeManager:
             
     def update_ingredient(self, recipe_name: str, old_ingredient: str, new_ingredient: str):
 
-        recipe_name = recipe_name.title()
-        old_ingredient = old_ingredient.casefold()
-        new_ingredient = new_ingredient.casefold()
+        #recipe_name = recipe_name.title()
+        #old_ingredient = old_ingredient.title()
+        #new_ingredient = new_ingredient.title()
+
+        message: str = '{'
 
         controllo: bool = False
 
@@ -84,16 +87,20 @@ class RecipeManager:
             
             for ingredient_in_list in self.ricettario[recipe_name]:
 
-                if ingredient_in_list.casefold() == old_ingredient:
+                if ingredient_in_list == old_ingredient:
 
                     controllo = True
                 
             if controllo:
 
+                index: int = self.ricettario[recipe_name].index(old_ingredient)
                 self.ricettario[recipe_name].remove(old_ingredient)
-                self.ricettario[recipe_name].append(new_ingredient)
+                self.ricettario[recipe_name].insert(index, new_ingredient)
 
-                return f'nome ricetta:____ ingredienti:_,_,_,_,_'
+                message += f'\'{recipe_name}\': {self.ricettario[recipe_name]}'
+                message += '}'
+
+                return message
 
             else:
                 
@@ -101,13 +108,11 @@ class RecipeManager:
             
     def list_recipes(self):
 
-        message: str = 'Ecco tutte le ricette presenti nel ricettario:\n'
-        count: int = 0
+        message: str = ''
 
         for ricetta in self.ricettario:
 
-            count += 1
-            message += f'{count}) {ricetta};' 
+            message += f'[\'{ricetta}\']' 
 
         
         if len(self.ricettario) > 0:
@@ -120,36 +125,46 @@ class RecipeManager:
         
     def list_ingredients(self, recipe_name: str): 
 
-        recipe_name = recipe_name.title()
+        #recipe_name = recipe_name.title()
 
         if recipe_name in self.ricettario:
 
-            message: str = f'Gli ingredienti della ricetta {recipe_name} sono:\n'
-            count: int = 0
-            
-            for ingredient in self.ricettario[recipe_name]:
-
-                message += f'{count}) {ingredient}'
+            message: str = f'{self.ricettario[recipe_name]}'
 
         else:
 
             return f'Errore: ricetta non presente nel ricettario'
+        
+        return message
 
     def search_recipe_by_ingredient(self, ingredient: str):
 
-        message: str = f'Le ricette che usano l\'ingrediente \'{ingredient}\' sono:\n'
-        count: int = 0
+        message: str = '{'
+        flag: bool = False
 
         for ricetta in self.ricettario:
 
             if ingredient in self.ricettario[ricetta]:
-
-                message += f'{count}) {ricetta}'
-
-        if message != f'Le ricette che usano l\'ingrediente \'{ingredient}\' sono:\n':
+                
+                flag = True
+                message += f'\'{ricetta}\': {self.ricettario[ricetta]}'
+                message += '}'
+        if flag:
 
             return message
         
         else:
 
             return f'Errore: nessuna ricetta presente nel ricettario non usa l\'ingrediente \'{ingredient}\''
+        
+
+print()
+print()
+print()
+	
+manager = RecipeManager()
+print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
+print(manager.add_ingredient("Pizza Margherita", "Basilico"))
+print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
+print(manager.remove_ingredient("Pizza Margherita", "Acqua"))
+print(manager.list_ingredients("Pizza Margherita"))
