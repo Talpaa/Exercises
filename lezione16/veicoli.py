@@ -1,6 +1,4 @@
-from abc import ABC
-
-class Veicolo(ABC):
+class Veicolo():
 
     def __init__(self, marca: str, modello: str, anno: int) -> None:
         super().__init__()
