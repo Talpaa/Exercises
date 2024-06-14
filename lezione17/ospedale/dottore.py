@@ -1,9 +1,8 @@
-from typing import Any
-from persona import Persona, Any
+from persona import Persona
 
 class Dottore(Persona):
 
-    def __init__(self, first_name: Any, last_name: Any, specialization: Any, parcel: Any) -> None:
+    def __init__(self, first_name: str, last_name: str, specialization: str, parcel: float) -> None:
         super().__init__(first_name, last_name)
 
         if type(specialization) == str:
@@ -21,7 +20,7 @@ class Dottore(Persona):
         else: 
             self.parcel = None
 
-    def setSpecialization(self, specialization: Any):
+    def setSpecialization(self, specialization: str):
 
         if type(specialization) == str:
 
@@ -31,7 +30,7 @@ class Dottore(Persona):
 
             print(f'La specializzazione inserita non è una stringa!')
 
-    def setParcel(self, parcel: Any):
+    def setParcel(self, parcel: float):
 
         if type(parcel) == float or type(parcel) == int:
 

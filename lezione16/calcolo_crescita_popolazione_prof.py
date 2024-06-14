@@ -9,7 +9,7 @@ class Specie:
         """Calcola la popolazione dell'anno successivo."""
         self.popolazione = int(self.popolazione * (1 + self.tasso_crescita / 100))  # Aggiorna la popolazione
 
-    def anni_per_superare(self, altra_specie: 'Specie') -> int:
+    def anni_per_superare(self, altra_specie: 'Specie') -> int | str:
         """Determina in quanti anni la popolazione di questa specie supererà quella dell'altra."""
         anni = 0  # int: Contatore degli anni
         while self.popolazione <= altra_specie.popolazione:  # Loop finché questa popolazione non supera l'altra
@@ -20,7 +20,7 @@ class Specie:
                 return f"{self.nome} non supererà mai {altra_specie.nome}"  # Ritorna un messaggio se il limite è raggiunto
         return anni  # Ritorna il numero di anni necessari
     
-    def getDensita(self, area_kmq: float) -> int:
+    def getDensita(self, area_kmq: float) -> int | str:
         """Calcola gli anni necessari per raggiungere una densità di 1 individuo per km quadrato."""
         if not area_kmq:  # Controlla se l'area è specificata
             return "Area non specificata"  # Ritorna un messaggio di errore

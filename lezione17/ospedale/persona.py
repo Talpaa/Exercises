@@ -1,8 +1,6 @@
-from typing import Any
-
 class Persona:
 
-    def __init__(self, first_name: Any, last_name: Any) -> None:
+    def __init__(self, first_name: str, last_name: str) -> None:
         
         name: bool = False
         surname: bool = False
@@ -35,7 +33,7 @@ class Persona:
 
             self.age = None
 
-    def setName(self, first_name: Any):
+    def setName(self, first_name: str):
 
         if type(first_name) == str:
 
@@ -45,7 +43,7 @@ class Persona:
 
             print(f"Il nome inserito non è una stringa!")
 
-    def setLastName(self, last_name: Any):
+    def setLastName(self, last_name: str):
 
         if type(last_name) == str:
 
@@ -55,7 +53,7 @@ class Persona:
 
             print(f"Il nome inserito non è una stringa!")
 
-    def setAge(self, age: Any):
+    def setAge(self, age: int):
 
         if type(age) == int:
 

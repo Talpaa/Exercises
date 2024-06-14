@@ -1,8 +1,8 @@
-from persona import Persona,Any
+from persona import Persona
 
 class Paziente(Persona):
 
-    def __init__(self, first_name: Any, last_name: Any, id_code: Any) -> None:
+    def __init__(self, first_name: str, last_name: str, id_code: str) -> None:
         super().__init__(first_name, last_name)
 
         if type(id_code) == str:
@@ -13,7 +13,7 @@ class Paziente(Persona):
 
             self.id_code = None
 
-    def setIdCode(self, id_code: Any):
+    def setIdCode(self, id_code: str):
 
         if type(id_code) == str:
 
