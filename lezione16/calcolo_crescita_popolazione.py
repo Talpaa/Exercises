@@ -83,5 +83,5 @@ anni_necessari = elefante.anni_per_superare(bufalo_klingon)  # Calcola gli anni 
 print(f"Anni necessari perché la popolazione di elefanti superi quella dei bufali Klingon: {anni_necessari}")
 
 # Calcolo della densità di popolazione per i Bufali Klingon
-anni_densita = bufalo_klingon.getDensita(1500)  # Calcola gli anni necessari per raggiungere una densità di 1 bufalo Klingon per km²
+anni_densita = bufalo_klingon.getDensita(150)  # Calcola gli anni necessari per raggiungere una densità di 1 bufalo Klingon per km²
 print(f"Anni necessari per raggiungere una densità di 1 Bufalo Klingon per km quadrato: {anni_densita}")
