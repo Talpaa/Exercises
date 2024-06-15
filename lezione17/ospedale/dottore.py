@@ -28,7 +28,7 @@ class Dottore(Persona):
 
         else:
 
-            print(f'La specializzazione inserita non è una stringa!')
+            return f'La specializzazione inserita non è una stringa!'
 
     def setParcel(self, parcel: float):
 
@@ -38,11 +38,11 @@ class Dottore(Persona):
 
         else:
 
-            print(f'Il valore della parcella non è un float!')
+            return f'Il valore della parcella non è un float!'
 
     def getSpecialization(self):
 
-        return f'{self.specialization}'
+        return self.specialization
 
     def getParcel(self):
 
@@ -50,19 +50,13 @@ class Dottore(Persona):
     
     def isAValidDoctor(self):
         
-        if self.getAge().isdigit():
+        if type(self.getAge()) == int:
 
-            if int(self.getAge()) >= 30:
+            if self.getAge() >= 30:
 
-                print(f"Doctor {self.getName()} e {self.getLastName()} is valid!")
-
-            else:
-
-                print(f"Doctor {self.getName()} e {self.getLastName()} is not valid!")
+                return(f"Doctor {self.getName()} {self.getLastName()} is valid!")
                 
-        else:
-            
-            print(f"Doctor {self.getName()} e {self.getLastName()} is not valid!")
+        return(f"Doctor {self.getName()} {self.getLastName()} is not valid!")
     
     def doctorGreet(self):
 

@@ -25,7 +25,7 @@ class Paziente(Persona):
 
     def getIdCode(self):
 
-        return f'{self.id_code}'
+        return self.id_code
     
     def patientInfo(self):
 

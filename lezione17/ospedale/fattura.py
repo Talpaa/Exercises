@@ -3,12 +3,12 @@ from paziente import Paziente
 
 class Fattura:
 
-    def __init__(self, patients: list[Paziente], doctor: Dottore) -> None:
+    def __init__(self, doctor: Dottore) -> None:
         
         if (type(doctor) == Dottore)and(doctor.isAValidDoctor()):
-            self.patients = patients
+            self.patients: list[Paziente] = []
             self.doctor = doctor
-            self.fatture = len(patients)
+            self.fatture = len(self.patients)
             self.salary = 0
 
         else:
@@ -21,18 +21,18 @@ class Fattura:
 
     def getSalary(self):
 
-        #((self.doctor.getParcel()) * (self.fatture))
-
         if (type(self.doctor.getParcel()) == float)and(type(self.fatture) == int): # type: ignore
             
-            return f'{self.salary}'
+            self.fatture = len(self.patients)
+            self.salary = self.fatture * self.doctor.getParcel()
+            return self.salary
 
         elif (self.doctor.getParcel() == None)and(self.fatture == None): # type: ignore
 
             print(f'Il dottore non ha settato un valore per la parcella!')
             print(f'Il dottore non ha pazienti')
 
-        elif (self.doctor.getParcel() == None): # type: ignore
+        elif (self.doctor.getParcel() == None): 
 
             print(f'Il dottore non ha settato un valore per la parcella!')
 
@@ -40,7 +40,7 @@ class Fattura:
 
             print(f'Il dottore non ha pazienti')
 
-        return False
+        return None
 
     def getFatture(self):
 
@@ -48,15 +48,19 @@ class Fattura:
 
             self.fatture = len(self.patients)
 
-            return f'{self.fatture}'
+            return self.fatture
         
         else:
 
-            return f'{0}'
+            return None
         
     def addPatient(self, patient: Paziente):
 
-        if (type(patient) == Paziente)and(type(self.patients) == list[Paziente]):
+        if type(patient) == Paziente:
+
+            if self.patients == None:
+
+                self.patients = []
 
             self.patients.append(patient)
             self.getFatture()

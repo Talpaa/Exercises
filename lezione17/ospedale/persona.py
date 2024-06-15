@@ -12,8 +12,9 @@ class Persona:
 
         else:
 
-            print(f"Il nome inserito non è una stringa!")
             self.first_name = None
+            print(f"Il nome inserito non è una stringa!")
+            
 
         if type(last_name) == str:
 
@@ -22,8 +23,8 @@ class Persona:
             
         else:
 
-            print(f"Il cognome inserito non è una stringa!")
             self.last_name = None
+            print(f"Il cognome inserito non è una stringa!")
 
         if name and surname:
 
@@ -41,7 +42,7 @@ class Persona:
 
         else:
 
-            print(f"Il nome inserito non è una stringa!")
+            return(f"Il nome inserito non è una stringa!")
 
     def setLastName(self, last_name: str):
 
@@ -51,7 +52,7 @@ class Persona:
 
         else:
 
-            print(f"Il nome inserito non è una stringa!")
+            return(f"Il cognome inserito non è una stringa!")
 
     def setAge(self, age: int):
 
@@ -61,20 +62,20 @@ class Persona:
 
         else:
         
-            print(f"L'età inserita non è un intero!")
+            return(f"L'età inserita non è un intero!")
 
     def getName(self):
 
-        return f'{self.first_name}'
+        return self.first_name
 
     def getLastName(self):
 
-        return f'{self.last_name}'
+        return self.last_name
 
     def getAge(self):
 
-        return f'{self.age}'
+        return self.age
     
     def greet(self):
 
-        print(f'Ciao, sono {self.getName()} {self.getLastName()}! Ho età {self.getAge()}!')
+        print(f'Ciao, sono {self.getName()} {self.getLastName()}! Ho {self.getAge()} anni!')
