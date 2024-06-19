@@ -21,41 +21,25 @@ def merge(input_list_sx: list[int], input_list_dx: list[int]):
 
     for k in range(len(merge_list)):
 
-        if (input_list_sx[i] == None):
+        if(input_list_sx[i] > input_list_dx[j]):
 
             merge_list[k] = input_list_dx[j]
-            input_list_dx[j] = None
 
+            j += 1
 
-            if j+1 < len(input_list_dx):
-                j += 1
+            if j == len(input_list_dx):
 
-        elif (input_list_dx[j] == None):
-
-            merge_list[k] = input_list_sx[i]
-            input_list_sx[i] = None
-
-
-            if i+1 < len(input_list_sx):
-                i += 1
-
-        elif(input_list_sx[i] > input_list_dx[j]):
-
-            merge_list[k] = input_list_dx[j]
-            input_list_dx[j] = None
-
-
-            if j+1 < len(input_list_dx):
-                j += 1
+                return (merge_list[:k+1] + input_list_sx[i:])
         
         else:
 
             merge_list[k] = input_list_sx[i]
-            input_list_sx[i] = None
 
+            i += 1
 
-            if i+1 < len(input_list_sx):
-                i += 1
+            if i == len(input_list_sx):
+
+                return (merge_list[:k+1] + input_list_dx[j:])
 
     return merge_list
 
