@@ -3,10 +3,10 @@ from film import Film
 
 class Noleggio:
 
-    def __init__(self, film_list: list[Film]) -> None:
+    def __init__(self, film_list: list[Azione, Commedia, Drama]) -> None:
         
-        self.film_list: list[Film] = film_list #lista film disponibili all'acquisto
-        self.rented_film: dict[int: list[Film]] = {}
+        self.film_list: list[Azione, Commedia, Drama] = film_list #lista film disponibili all'acquisto
+        self.rented_film: dict[int: list[Azione, Commedia, Drama]] = {}
 
     def isAvaible(self, film: Film):
 
@@ -49,6 +49,4 @@ class Noleggio:
                 self.rented_film[id_client].remove(film)
                 self.film_list.append(film)
 
-                if film.getGenere
-
-                print(f"Cliente: {id_client}! La penale da pagare per il film {film.getTitle()} e' di {} euro!")
+                print(f"Cliente: {id_client}! La penale da pagare per il film {film.getTitle()} e' di {film.calcolaPenaleRitardo()} euro!")
