@@ -1,3 +1,6 @@
+from lezione15.context_manager2 import Timer
+
+
 def mergeSort(input_list: list[int]):
 
     if len(input_list) == 1:
@@ -40,15 +43,21 @@ def merge(input_list_sx: list[int], input_list_dx: list[int]):
             if i == len(input_list_sx):
 
                 return (merge_list[:k+1] + input_list_dx[j:])
+            
+import random
 
-    return merge_list
+lista = [random.randint(0, 100000) for _ in range(1000000)]
+
+with Timer():
+
+    mergeSort
 
 
-if __name__ == '__main__':
+'''if __name__ == '__main__':
 
     lista: list[int] = [31,52,856,314,22,13]
     #lista: list[int] = [0,1,2,3,4,5,6,7]
 
-    print(mergeSort(lista))
+    print(mergeSort(lista))'''
 
 
