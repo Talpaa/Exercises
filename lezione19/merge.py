@@ -1,5 +1,18 @@
-from lezione15.context_manager2 import Timer
+#from lezione15.context_manager2 import Timer
 
+def decorator(func):
+
+    def wrapper(*args):
+
+        import time
+
+        start = time.time()
+
+        func()
+
+        print(f'Time elapsed: {time.time() - start}')
+
+    return wrapper
 
 def mergeSort(input_list: list[int]):
 
@@ -47,10 +60,12 @@ def merge(input_list_sx: list[int], input_list_dx: list[int]):
 import random
 
 lista = [random.randint(0, 100000) for _ in range(1000000)]
+print(lista)
+mergeSort(lista)
 
-with Timer():
+'''with Timer():
 
-    mergeSort
+    mergeSort'''
 
 
 '''if __name__ == '__main__':

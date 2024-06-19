@@ -1,14 +1,13 @@
 from movie_genre import Azione, Commedia, Drama
-from film import Film
 
 class Noleggio:
 
-    def __init__(self, film_list: list[Azione, Commedia, Drama]) -> None:
+    def __init__(self, film_list: list[Azione | Commedia | Drama]) -> None:
         
         self.film_list: list[Azione, Commedia, Drama] = film_list #lista film disponibili all'acquisto
         self.rented_film: dict[int: list[Azione, Commedia, Drama]] = {}
 
-    def isAvaible(self, film: Film):
+    def isAvaible(self, film: Azione | Commedia | Drama):
 
         if film in self.film_list:
 
@@ -20,7 +19,7 @@ class Noleggio:
             print(f"Il film scelto non è disponibile: {film.getTitle()}!")
             return False
         
-    def rentAMovie(self, film: Film, id_client: int):
+    def rentAMovie(self, film: Azione | Commedia | Drama, id_client: int):
 
         if self.isAvaible(film):
 
@@ -40,7 +39,7 @@ class Noleggio:
 
             print(f'Il cliente {id_client} non ha potuto noleggiare {film.getTitle()}!')
 
-    def giveBack(self,film: Film, id_client: int, giorni_affitto: int):
+    def giveBack(self,film: Azione | Commedia | Drama, id_client: int, giorni_affitto: int):
 
         if id_client in self.rented_film:
 

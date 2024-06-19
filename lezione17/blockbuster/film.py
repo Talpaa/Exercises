@@ -1,4 +1,6 @@
-class Film:
+#from abc import ABC, abstractmethod
+
+class Film():
 
     def __init__(self, id: int, title: str) -> None:
         
@@ -30,3 +32,8 @@ class Film:
         else:
 
             return False
+        
+    ''' @abstractmethod    
+    def calcolaPenaleRitardo():
+
+        pass'''
