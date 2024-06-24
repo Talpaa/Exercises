@@ -13,15 +13,15 @@ class Forma(ABC):
 
 class Quadrato(Forma):
 
-    def __init__(self, lato: int) -> None:
+    def __init__(self, lato: float) -> None:
 
         self.nome: str= 'Quadrato'
-        self.lato: int = lato
+        self.lato: float = lato
 
     def render(self)->str:
 
-        lato: int= self.lato
-        message: str = ''
+        lato: int= int(self.lato)
+        render_quad: str = '\n'
 
         for i in range(0, lato):
 
@@ -29,89 +29,111 @@ class Quadrato(Forma):
 
                 if (i == 0)or(i == (lato-1)):
 
-                    message += '*'
+                    render_quad += '*'
 
                 elif (j == 0)or(j == (lato-1)):
 
-                    message += '*'
+                    render_quad += '*'
 
                 else:
 
-                    message += ' '
+                    render_quad += ' '
 
-            message += '\n'
+            render_quad += '\n'
         
-        return message
+        return render_quad[:-1]
 
     
-    def getArea(self)->int:
+    def getArea(self)->float:
         
         return self.lato ** 2
     
 
 class Rettangolo(Forma):
 
-    def __init__(self, lato: int, base: int) -> None:
+    def __init__(self, altezza: float, base: float) -> None:
         
         self.nome: str = 'Rettangolo'
-        self.lato:int = lato
-        self.base: int = base
+        self.altezza:float = altezza
+        self.base: float = base
 
     def render(self) -> str:
         
-        lato: int= self.lato
-        base: int = self.base
-        message: str = ''
+        altezza: int= int(self.altezza)
+        base: int = int(self.base)
+        render_ret: str = '\n'
 
-        for i in range(0, lato):
+        for i in range(0, altezza):
 
             for j in range(0, base):
 
-                if (i == 0)or(i == (lato-1)):
+                if (i == 0)or(i == (altezza-1)):
 
-                    message += '*'
+                    render_ret += '*'
 
                 elif (j == 0)or(j == (base-1)):
 
-                    message += '*'
+                    render_ret += '*'
 
                 else:
 
-                    message += ' '
+                    render_ret += ' '
 
-            message += '\n'
+            render_ret += '\n'
         
-        return message
-    
-    def getArea(self) -> int:
-        
-        return self.lato * self.base
-    
-class Triangolo(Forma):
-
-    def __init__(self, lato: int, base: int) -> None:
-
-        self.lato: int = lato
-        self.base: int = base
-        
-    def render(self) -> str:
-        return super().render()
+        return render_ret[:-1]
     
     def getArea(self) -> float:
         
-        return (self.lato * self.base) / 2 
+        return self.altezza * self.base
+    
+class Triangolo(Forma):
+
+    def __init__(self, altezza: float, base: float) -> None:
+
+        self.altezza: float = altezza
+        self.base: float = base
+        
+    def render(self) -> str:
+        
+        altezza: int = int(self.altezza)
+        base: int = int(self.base)
+
+        render_tri: str = f'\n'
+
+        for i in range(altezza-1):
+
+            if i > 0:
+
+                render_tri += f'*'
+                if i > 1:
+                    for k in range(i-1):
+
+                        render_tri += ' '
+
+            render_tri += f'*\n'
+
+        for j in range(base):
+
+            render_tri += f'*'
+
+        return render_tri
+
+    def getArea(self) -> float:
+        
+        return (self.altezza * self.base) / 2 
 
 quad: Quadrato = Quadrato(4)
 
 print(quad.render())
 print(quad.getArea())
 
-ret: Rettangolo = Rettangolo(lato=4, base=3)
+ret: Rettangolo = Rettangolo(altezza=4, base=8)
 
 print(ret.render())
 print(ret.getArea())
 
-tri: Triangolo = Triangolo(lato=7, base=3)
+tri: Triangolo = Triangolo(altezza=4, base=4)
 
 print(tri.render())
 print(tri.getArea())
