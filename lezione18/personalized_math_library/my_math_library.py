@@ -55,7 +55,7 @@ class PersonalizedMathLibrary:
         denominatore: float = self.denominatore
         return denominatore
 
-    def semplifica(self):
+    def semplifica(self)->int:
 
         if (self.numeratore == None)or(self.denominatore == None):
 
@@ -63,4 +63,41 @@ class PersonalizedMathLibrary:
         
         else:
 
-            pass
+            i: int = 0
+
+            numeratore: int = self.numeratore
+            denominatore: int = self.denominatore
+
+            if numeratore < denominatore:
+
+                i = numeratore
+
+            elif denominatore < numeratore:
+
+                i = denominatore
+
+            else:
+
+                self.numeratore = numeratore
+                self.denominatore = denominatore      
+
+                return f'{numeratore} {denominatore}'
+
+            while (i > 0):
+
+                if ((numeratore) % i == 0)and((denominatore) % i == 0):
+
+                    numeratore /= i          
+
+                elif(numeratore == 1)or(denominatore == 1):
+
+                    self.numeratore = numeratore
+                    self.denominatore = denominatore
+
+                    return f'{numeratore} {denominatore}'
+                
+                i -= 1
+
+            self.numeratore = numeratore
+            self.denominatore = denominatore
+            return f'{numeratore} {denominatore}'
