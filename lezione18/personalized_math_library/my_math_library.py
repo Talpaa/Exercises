@@ -57,7 +57,7 @@ class PersonalizedMathLibrary:
 
     def semplifica(self)->int:
 
-        if (self.numeratore == None)or(self.denominatore == None):
+        if (self.get_numeratore() == None)or(self.get_denominatore() == None):
 
             raise NoneNumDenError
         
@@ -65,8 +65,8 @@ class PersonalizedMathLibrary:
 
             i: int = 0
 
-            numeratore: float = self.numeratore
-            denominatore: float = self.denominatore
+            numeratore: float = self.get_numeratore()
+            denominatore: float = self.get_denominatore()
 
             if numeratore < denominatore:
 
@@ -78,8 +78,8 @@ class PersonalizedMathLibrary:
 
             else:
 
-                self.numeratore = numeratore
-                self.denominatore = denominatore      
+                self.set_numeratore(numeratore)
+                self.set_denominatore(denominatore)
 
                 return f'{numeratore} {denominatore}'
 
@@ -92,15 +92,15 @@ class PersonalizedMathLibrary:
 
                 elif(numeratore == 1)or(denominatore == 1):
 
-                    self.numeratore = numeratore
-                    self.denominatore = denominatore
+                    self.set_numeratore(numeratore)
+                    self.set_denominatore(denominatore)
 
                     return f'{numeratore} {denominatore}'
                 
                 i -= 1
 
-            self.numeratore = numeratore
-            self.denominatore = denominatore
+            self.set_numeratore(numeratore)
+            self.set_denominatore(denominatore)
             return f'{numeratore} {denominatore}'
         
     def add_fractions(self, frazione: 'PersonalizedMathLibrary'):
@@ -109,48 +109,48 @@ class PersonalizedMathLibrary:
         denominatore: float = 0.0
 
 
-        if self.denominatore == frazione.denominatore:
+        if self.get_denominatore() == frazione.get_denominatore():
 
-            numeratore = self.numeratore + frazione.numeratore
-            denominatore = self.denominatore
+            numeratore = self.get_numeratore() + frazione.get_numeratore()
+            denominatore = self.get_denominatore()
 
             return f'{numeratore} {denominatore}'
         
-        elif (self.denominatore == 1):
+        elif (self.get_denominatore() == 1):
 
-            denominatore = frazione.denominatore
+            denominatore = frazione.get_denominatore()
 
-            numeratore = (self.numeratore * denominatore) + frazione.numeratore
+            numeratore = (self.get_numeratore() * denominatore) + frazione.get_numeratore()
             return f'{numeratore} {denominatore}'
         
-        elif (frazione.denominatore == 1):
+        elif (frazione.get_denominatore() == 1):
 
-            denominatore = self.denominatore
+            denominatore = self.get_denominatore()
 
-            numeratore = (frazione.numeratore * denominatore) + self.numeratore
+            numeratore = (frazione.get_numeratore() * denominatore) + self.get_numeratore()
             return f'{numeratore} {denominatore}'
         
-        elif((frazione.denominatore % self.denominatore)== 0):
+        elif((frazione.get_denominatore() % self.get_denominatore())== 0):
 
-            denominatore = frazione.denominatore
+            denominatore = frazione.get_denominatore()
 
-            numeratore = (self.numeratore * (denominatore / self.denominatore)) + frazione.numeratore
+            numeratore = (self.get_numeratore() * (denominatore / self.get_denominatore())) + frazione.get_numeratore()
 
             return f'{numeratore} {denominatore}'
 
-        elif((self.denominatore % frazione.denominatore)== 0):
+        elif((self.get_denominatore() % frazione.get_denominatore())== 0):
 
-            denominatore = self.denominatore
+            denominatore = self.get_denominatore()
 
-            numeratore = self.numeratore + (frazione.numeratore * (denominatore / frazione.denominatore))
+            numeratore = self.get_numeratore() + (frazione.get_numeratore() * (denominatore / frazione.get_denominatore()))
 
             return f'{numeratore} {denominatore}'
 
         else:
 
-            denominatore = self.denominatore * frazione.denominatore
+            denominatore = self.get_denominatore() * frazione.get_denominatore()
 
-            numeratore = (self.numeratore * (denominatore / self.denominatore))+(frazione.numeratore * (denominatore / frazione.denominatore))
+            numeratore = (self.get_numeratore() * (denominatore / self.get_denominatore()))+(frazione.get_numeratore() * (denominatore / frazione.get_denominatore()))
 
             return f'{numeratore} {denominatore}'
         
@@ -160,47 +160,74 @@ class PersonalizedMathLibrary:
         denominatore: float = 0.0
 
 
-        if self.denominatore == frazione.denominatore:
+        if self.get_denominatore() == frazione.get_denominatore():
 
-            numeratore = self.numeratore - frazione.numeratore
-            denominatore = self.denominatore
+            numeratore = self.get_numeratore() - frazione.get_numeratore()
+            denominatore = self.get_denominatore()
 
             return f'{numeratore} {denominatore}'
         
-        elif (self.denominatore == 1):
+        elif (self.get_denominatore() == 1):
 
-            denominatore = frazione.denominatore
+            denominatore = frazione.get_denominatore()
 
-            numeratore = (self.numeratore * denominatore) - frazione.numeratore
+            numeratore = (self.get_numeratore() * denominatore) - frazione.get_numeratore()
             return f'{numeratore} {denominatore}'
         
-        elif (frazione.denominatore == 1):
+        elif (frazione.get_denominatore() == 1):
 
-            denominatore = self.denominatore
+            denominatore = self.get_denominatore()
 
-            numeratore = (frazione.numeratore * denominatore) - self.numeratore
+            numeratore = self.get_numeratore() - (frazione.get_numeratore() * denominatore)
             return f'{numeratore} {denominatore}'
         
-        elif((frazione.denominatore % self.denominatore)== 0):
+        elif((frazione.get_denominatore() % self.get_denominatore())== 0):
 
-            denominatore = frazione.denominatore
+            denominatore = frazione.get_denominatore()
 
-            numeratore = (self.numeratore * (denominatore / self.denominatore)) - frazione.numeratore
+            numeratore = (self.get_numeratore() * (denominatore / self.get_denominatore())) - frazione.get_numeratore()
 
             return f'{numeratore} {denominatore}'
 
-        elif((self.denominatore % frazione.denominatore)== 0):
+        elif((self.get_denominatore() % frazione.get_denominatore())== 0):
 
-            denominatore = self.denominatore
+            denominatore = self.get_denominatore()
 
-            numeratore = self.numeratore - (frazione.numeratore * (denominatore / frazione.denominatore))
+            numeratore = self.get_numeratore() - (frazione.get_numeratore() * (denominatore / frazione.get_denominatore()))
 
             return f'{numeratore} {denominatore}'
 
         else:
 
-            denominatore = self.denominatore * frazione.denominatore
+            denominatore = self.get_denominatore() * frazione.get_denominatore()
 
-            numeratore = (self.numeratore * (denominatore / self.denominatore))-(frazione.numeratore * (denominatore / frazione.denominatore))
+            numeratore = (self.get_numeratore() * (denominatore / self.get_denominatore()))-(frazione.get_numeratore() * (denominatore / frazione.get_denominatore()))
 
             return f'{numeratore} {denominatore}'
+        
+    def multiply_fractions(self, frazione: 'PersonalizedMathLibrary'):
+
+        numeratore: float = self.get_numeratore() * frazione.get_numeratore()
+
+        denominatore: float = self.get_denominatore() * frazione.get_denominatore()
+
+        return f'{numeratore} {denominatore}'
+    
+    def divide_fractions(self, frazione: 'PersonalizedMathLibrary'):
+
+        numeratore: float = self.get_numeratore() * frazione.get_denominatore()
+
+        denominatore: float = self.get_denominatore() * frazione.get_numeratore()
+
+        return f'{numeratore} {denominatore}'
+    
+    def equal_fractions(self, frazione: 'PersonalizedMathLibrary'):
+
+        self.semplifica()
+        frazione.semplifica()
+
+        if (self.numeratore == frazione.numeratore)and(self.denominatore == frazione. denominatore):
+
+            return True
+        
+        else: return False
