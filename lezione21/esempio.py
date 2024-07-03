@@ -90,31 +90,11 @@ def decorator(func):
 
 from merge import mergeSort
 
-class Analisi:
 
-    def tempo(func):
-
-        def wrapper(*args):
-            import time
-
-            start = time.time()
-
-            func(*args)
-
-            print(f'Time elapsed: {time.time() - start}')
-
-        return wrapper
-
-@Analisi.tempo
-def area_cerchio(raggio: float):
-
-    return raggio * raggio * 3.14
-
-area_cerchio(1)
-#mergeSort = decorator(mergeSort)
-#import random
-#lista = [random.randint(0, 100000) for _ in range(100000)]
-#mergeSort(lista)
+mergeSort = decorator(mergeSort)
+import random
+lista = [random.randint(0, 100000) for _ in range(100000)]
+mergeSort(lista)
 
 # import random
 
