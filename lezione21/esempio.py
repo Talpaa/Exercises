@@ -1,100 +1,278 @@
-import time
-
-
-class FileManager:
+# import random
+# import time
     
-    def __init__(self, file_name: str, mode: str) -> None:
+
+# def get_time(func):
+    
+#     def wrapper(*args):
+#         import time
         
-        self.file_name: str = file_name
-        self.mode: str = mode
-    
-    
-    def __enter__(self):
+#         start = time.time()
         
-        self.file_wrapper = open(self.file_name, self.mode)
+#         func(*args)
         
-        return self.file_wrapper
+#         end = time.time()
+#         elapsed_time = end - start
+#         print(f"{elapsed_time=}")
     
-    def __exit__(self, exc_type, exc_value, traceback):
+#     return wrapper
+
+
+# class Prova:
+    
+#     def __init__(self) -> None:
         
-        self.file_wrapper.close()
-    
-    
-with FileManager(file_name="prova.txt", mode="w") as file:
-    
-    file.write("Ciao")
-    
-with open("prova.txt", "a") as file:
-    
-    file.write("Ciao")
-    
-
-class Timer:
-    
-    def __enter__(self):
+#         self.i  = 10
+     
+#     @get_time   
+#     def do_something(self):
         
-        self.time = time.time()
-        
-    def __exit__(self, exc_type, exc_value, traceback):
-        
-        print(f"Time Elapsed: {time.time() - self.time}")
-        
-        return False
+#         pass
 
 
-def ciao(name: str) -> str:
+# prova = Prova()
+
+# prova.do_something()
+
+# @get_time
+# def say_hello(name: str) -> None:
     
-    print(f"Ciao, {name}")
+#     print(f"Hello, {name}")
 
-def salve(name: str) -> str:
+# @get_time
+# def random_list(upper_bound: int):
     
-    print(f"Salve, {name}")
+#     sleep_time: int = random.randint(0, upper_bound)
+#     time.sleep(sleep_time)
 
-def saluta_bob(func) -> str:
+# say_hello("Flavio")
+# random_list(10)
+
+# @get_time
+# def say_ciao() -> None:
     
-    func("Bob")
-
-print(saluta_bob(ciao))
-print(saluta_bob(salve))
-
-def parent():
+#     print(f"Ciao, Flavio")
     
-    print("Sono in parent!")
+# say_ciao()
 
+# def saluta(func):
     
-    def first_child():
+#     func("Flavio")
+
+# saluta(say_hello)
+# saluta(say_ciao)
+
+
+# def parent():
+    
+#     print(f"Sono in parent")
+    
+#     def first_child():
         
-        print("Sono in First Child!")
+#         print(f"Sono in first child")
+        
+#     def second_child():
+        
+#         print(f"Sono in second child")
+        
     
-    return first_child
+#     return second_child
 
 
+# parent()
+# out_function = parent()
+# print(out_function)
+# out_function()
+# import time
 
 
-
-
-
-
-def decorator(func):
+# class FileManager:
     
-    def wrapper(*args):
-        import time
+#     def __init__(self, file_name: str, mode: str) -> None:
         
-        start = time.time()
+#         self.file_name: str = file_name
+#         self.mode: str = mode
+    
+    
+#     def __enter__(self):
         
-        func(*args)
+#         self.file_wrapper = open(self.file_name, self.mode)
         
-        print(f"Time elapsed: {time.time() - start}")
+#         return self.file_wrapper
+    
+#     def __exit__(self, exc_type, exc_value, traceback):
         
-    return wrapper
+#         self.file_wrapper.close()
+    
+    
+# with FileManager(file_name="prova.txt", mode="w") as file:
+    
+#     file.write("Ciao")
+    
+# with open("prova.txt", "a") as file:
+    
+#     file.write("Ciao")
+    
 
-from merge import mergeSort
+# class Timer:
+    
+#     def __enter__(self):
+        
+#         self.time = time.time()
+        
+#     def __exit__(self, exc_type, exc_value, traceback):
+        
+#         print(f"Time Elapsed: {time.time() - self.time}")
+        
+#         return False
 
 
-mergeSort = decorator(mergeSort)
-import random
-lista = [random.randint(0, 100000) for _ in range(100000)]
-mergeSort(lista)
+# def ciao(name: str) -> str:
+    
+#     print(f"Ciao, {name}")
+
+# def salve(name: str) -> str:
+    
+#     print(f"Salve, {name}")
+
+# def saluta_bob(func) -> str:
+    
+#     func("Bob")
+
+# print(saluta_bob(ciao))
+# print(saluta_bob(salve))
+
+# def parent():
+    
+#     print("Sono in parent!")
+
+    
+#     def first_child():
+        
+#         print("Sono in First Child!")
+    
+#     return first_child
+
+
+# def generatore():
+    
+#     yield "A"
+#     yield "B"
+#     yield "C"
+
+# prova_gerenatore = generatore()
+
+# print(next(prova_gerenatore))
+# print(next(prova_gerenatore))
+# print(next(prova_gerenatore))
+# print(next(prova_gerenatore))
+# import time 
+# from contextlib import contextmanager
+
+# @contextmanager
+# def context_manager_decorator(*args):
+    
+#     start_time: float = time.time()
+    
+#     yield
+    
+#     end_time: float = time.time()
+#     elapsed_time: float = end_time - start_time
+    
+#     print(f"{elapsed_time=}")
+
+
+# with context_manager_decorator() as _:
+    
+#     print("Ciao")
+
+# @context_manager_decorator
+# def area_cerchio(raggio: float):
+    
+#     return raggio * raggio * 3.14
+
+
+# area_cerchio(1)
+
+# import sys
+
+# a = []
+# b = a
+# print(sys.getrefcount(a))
+
+
+# threads: list = []
+
+# def thread_function(name):
+    
+#     print(f"{name} Time - {time.time()}")
+#     time.sleep(2)
+#     print(f"{name} Time - {time.time()}")
+
+# import threading
+# for i in range(3):
+    
+#     x = threading.Thread(target=thread_function, args=(i, ))
+#     x.start()
+#     threads.append(x)
+    
+    
+
+# print(f"Prima di thread")
+# x.start()
+# print(f"Thread Partito")
+# x.join()
+# print("Thread finito????")
+# def decorator(func):
+    
+#     def wrapper(*args):
+#         import time
+        
+#         start = time.time()
+        
+#         func(*args)
+        
+#         print(f"Time elapsed: {time.time() - start}")
+        
+#     return wrapper
+
+# from merge import mergeSort
+
+
+# class Analisi:
+    
+#     @staticmethod
+#     def tempo(func):
+    
+#         def wrapper(*args):
+#             import time
+            
+#             start = time.time()
+            
+#             value = func(*args)
+            
+#             print(f"Time elapsed: {time.time() - start}")
+            
+#             return value, time.time() - start
+            
+#         return wrapper 
+
+
+# @Analisi.tempo
+# def area_cerchio(raggio: float):
+    
+#     return raggio * raggio * 3.14
+
+#area_cerchio(1)
+
+# ciao = "Ciao"
+
+# print(f"{ciao=}")
+
+# mergeSort = decorator(mergeSort)
+# import random
+# lista = [random.randint(0, 100000) for _ in range(100000)]
+# mergeSort(lista)
 
 # import random
 
@@ -299,7 +477,7 @@ mergeSort(lista)
 #     start = time.time()
 #     print("__enter__")
     
-#     yield "Ciao"
+#     yield
     
 #     print("__exit__")
 #     end = time.time()
@@ -317,5 +495,39 @@ mergeSort(lista)
 #         time.sleep(1)
         
 
-
+import time
     
+
+def funzione(id: int):
+    import time
+    import random
+    
+    sleep_time: int = random.randint(1, 10)
+    print(f"{id=} time {time.time()}")
+    time.sleep(sleep_time)
+    print(f"{id=} time {time.time()}")
+    
+if __name__ == "__main__":
+    
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
+    
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        executor.map(funzione, range(100))
+   
+   
+    
+    # lista_thread: list[threading.Thread] = []
+    
+    # for id in range(3):
+        
+    #     x: threading.Thread = threading.Thread(target=funzione, args=(id,))
+    #     lista_thread.append(x)
+    #     print(f"Prima di runnare il thread {time.time()}")
+    #     x.start()
+    #     print(f"Ho runnato il thread {time.time()}")
+    
+    # for t in lista_thread:
+        
+    #     t.join()
+    #     print(f"Terminato!")
