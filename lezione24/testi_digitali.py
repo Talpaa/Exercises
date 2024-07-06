@@ -12,6 +12,14 @@ class Documento:
 
         return self.testo
     
+    def isInText(self, parola_chiave: str)->bool:
+
+        if parola_chiave in self.getTesto():
+
+            return True
+        
+        return False
+    
 
 class Email(Documento):
 
@@ -50,16 +58,47 @@ class Email(Documento):
         
         return f'Da: {self.mittente}, A: {self.destinatario}\nTitolo: {self.titolo}\nMessaggio: {self.testo}'
         
-    def writeToFile(self):
+    def writeToFile(self, nome_file: str):
 
-        with open('documento.txt', 'w') as email:
+        with open(f'lezione24/email/{nome_file}.txt', 'w') as email:
 
             email.write(self.getTesto())
 
 class File(Documento):
 
-    def __init__(self, testo: str, percorso: str) -> None:
+    def __init__(self) -> None:
 
-        self.percorso: str = f'lezione24/documenti/{percorso}.txt'
+        self.percorso: str = f'lezione24/documenti/documento.txt'
+        testo: str = ''
 
-        super().__init__(self.percorso)
+        super().__init__(testo)
+
+    def leggiTestoDaFile(self):
+
+        with open('lezione24/documenti/documento.txt', 'r') as documento:
+
+            return documento.read()
+
+    def getTesto(self) -> str:
+        
+        return f'Percorso: {self.percorso}\nContenuto: {self.leggiTestoDaFile()}'
+    
+
+'''email: Email = Email(testo='Ciao Bob, possiamo incontrarci domani?', mittente='alice@example.com', destinatario='bob@example.com', titolo='Incontro')
+
+file: File = File()
+
+print()
+print(email.getTesto())
+
+print()
+print(file.getTesto())
+
+print()
+email.writeToFile(nome_file='email1')
+
+print()
+print(email.isInText(parola_chiave='incontrarci'))
+
+print()
+print(file.isInText(parola_chiave='percorso'))'''
