@@ -84,21 +84,23 @@ class File(Documento):
         return f'Percorso: {self.percorso}\nContenuto: {self.leggiTestoDaFile()}'
     
 
-'''email: Email = Email(testo='Ciao Bob, possiamo incontrarci domani?', mittente='alice@example.com', destinatario='bob@example.com', titolo='Incontro')
+if __name__ == "__main__":
 
-file: File = File()
+    email: Email = Email(testo='Ciao Bob, possiamo incontrarci domani?', mittente='alice@example.com', destinatario='bob@example.com', titolo='Incontro')
 
-print()
-print(email.getTesto())
+    file: File = File()
 
-print()
-print(file.getTesto())
+    print()
+    print(email.getTesto())
 
-print()
-email.writeToFile(nome_file='email1')
+    print()
+    print(file.getTesto())
 
-print()
-print(email.isInText(parola_chiave='incontrarci'))
+    print()
+    email.writeToFile(nome_file='email1')
 
-print()
-print(file.isInText(parola_chiave='percorso'))'''
+    print()
+    print(email.isInText(parola_chiave='incontrarci'))
+
+    print()
+    print(file.isInText(parola_chiave='percorso'))
