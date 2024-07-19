@@ -40,22 +40,58 @@ class CifratoreACombinazione(CodificatoreMessaggio, DecodificatoreMessaggio):
         
         testoCodificato: str = testoInChiaro
 
-        for x in range(self.chiave):
+        for _ in range(self.chiave):
 
             testoCodificato = self.__mixa_stringa__(testoCodificato)
 
         return testoCodificato
     
+    def __ordina_stringa__(self, stringa: str):
+
+        stringa_ordinata: str = ''
+        countP: int = 0
+        countD: int = 1
+
+        while countP < len(stringa):
+
+            stringa_ordinata += stringa[countP]
+
+            countP +=2
+
+        while countD < len(stringa):
+
+            stringa_ordinata += stringa[countD]
+
+            countD += 2
+
+        return stringa_ordinata
+        
+    
     def decodifica(self, testoCodificato: str):
-        return super().decodifica(testoCodificato)
+        
+        testoInChiaro: str = testoCodificato
+
+        for _ in range(self.chiave):
+
+            testoInChiaro = self.__ordina_stringa__(testoInChiaro)
+
+        return testoInChiaro
 
 
+if __name__ == "__main__":
 
+    cifrario: CifratoreACombinazione = CifratoreACombinazione(chiave= 120)
 
-cifrario: CifratoreACombinazione = CifratoreACombinazione(chiave= 6)
+    stringa: str = 'abcdefghijklmnopqrstuvwxyz'
 
-stringa: str = '0123456789'
+    print(stringa)
+    print()
 
-stringa_mixata: str = cifrario.codifica(testoInChiaro=stringa)
+    stringa_mixata: str = cifrario.codifica(testoInChiaro=stringa)
 
-print(stringa_mixata)
+    print(stringa_mixata)
+    print()
+
+    stringa = cifrario.decodifica(testoCodificato=stringa_mixata)
+
+    print(stringa)

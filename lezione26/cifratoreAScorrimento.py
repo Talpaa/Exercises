@@ -74,17 +74,19 @@ class CifratoreAScorrimento(CodificatoreMessaggio, DecodificatoreMessaggio):
         return testoDecodificato
     
 
-cifrario: CifratoreAScorrimento = CifratoreAScorrimento(chiave= 26)
+if __name__ == "__main__":
 
-testo: str = 'abcdefghijklmnopqrstuvwxyz'
-print(testo)
+    cifrario: CifratoreAScorrimento = CifratoreAScorrimento(chiave= 26)
 
-print()
+    testo: str = 'abcdefghijklmnopqrstuvwxyz'
+    print(testo)
 
-testoCodificato: str = cifrario.codifica(testoInChiaro=testo)
-print(testoCodificato)
+    print()
 
-print()
+    testoCodificato: str = cifrario.codifica(testoInChiaro=testo)
+    print(testoCodificato)
 
-testoDecifrato: str = cifrario.decodifica(testoCodificato=testoCodificato)
-print(testoDecifrato)
+    print()
+
+    testoDecifrato: str = cifrario.decodifica(testoCodificato=testoCodificato)
+    print(testoDecifrato)
