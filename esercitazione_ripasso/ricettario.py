@@ -4,18 +4,33 @@ class RecipeManager:
         
         self.ricettario: dict[str:list[str]] = {}
 
-    def create_recipe(self, ricetta: str, ingredienti: list[str])->dict[str:list[str]]|str:
+    def create_recipe(self, name: str, ingredients: list[str])->dict[str:list[str]]|str:
 
-        if ricetta in self.ricettario:
+        if name in self.ricettario:
 
             return f'Errore: Ricetta già presente.'
         
-        self.ricettario[ricetta] = ingredienti
+        self.ricettario[name] = ingredients
 
-        dizio: dict[str:list[str]] = {ricetta: ingredienti}
+        dizio: dict[str:list[str]] = {name: ingredients}
 
         return dizio
 
+    def add_ingredient(self, recipe_name: str, ingredient: str):
+
+        if recipe_name in self.ricettario:
+
+            if ingredient in self.ricettario[recipe_name]:
+
+                pass
+
+            else:
+
+                return f'Errore: Questo ingrediente è gia presente in questa ricetta'
+
+        else:
+
+            return f'Errore: Questa ricetta non esiste'
 
 
 manager: RecipeManager = RecipeManager()
